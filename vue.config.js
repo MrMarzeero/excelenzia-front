@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  transpileDependencies: [],  // ou adicione os pacotes desejados, como ['some-package']
+  transpileDependencies: [],  
   configureWebpack: {
     optimization: {
       splitChunks: {

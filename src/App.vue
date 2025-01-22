@@ -5,7 +5,7 @@
     </header>
 
     <main>
-      <router-view></router-view> <!-- Aqui o conteúdo das rotas será exibido -->
+      <router-view></router-view> 
     </main>
 
   </div>

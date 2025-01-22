@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Certifique-se de que os componentes estão importados corretamente
 import DashboardPage from '@/views/DashboardPage.vue';
 import GerarProblema from '@/views/GerarProblema.vue';
 import LandingPage from '@/views/LandingPage.vue';
