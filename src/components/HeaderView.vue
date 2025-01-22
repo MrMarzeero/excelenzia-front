@@ -73,18 +73,18 @@ nav{
     font-family: "Poppins", serif;
     font-weight: 550;
     font-style: normal;
-    position: relative; /* Necessário para o ::after */
+    position: relative; 
 }
 
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -5px; /* Ajusta a linha abaixo do link */
+    bottom: -5px; 
     left: 0;
-    width: 0; /* Inicialmente não aparece */
+    width: 0; 
     height: 1px;
     background-color: #ffffff;
-    transition: all 0.3s ease; /* Suavidade ao deslizar */
+    transition: all 0.3s ease; 
 }
 
 .nav-item:hover{
@@ -98,7 +98,7 @@ nav{
 }
 
 .router-link-active::after {
-    width: 100%; /* A linha cobre o tamanho do link */
+    width: 100%; 
 }
 
 
