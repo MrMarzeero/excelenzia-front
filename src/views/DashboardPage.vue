@@ -8,18 +8,38 @@
             </div>
         </div>
 
+        
         <div class="dashboard-infos">
-            <p class="info-text">Exercícios resolvidos ao todo</p>
-            <p class="info-text">Exercícios de Programação resolvidos</p>
-            <p class="info-text">Exercícios de Matematica resolvidos</p>
-            <p class="info-text">Exercícios de Física resolvidos</p>
-            <p class="info-text">Simulados resolvidos</p>
-            <p class="info-text">Maior sequência de consistência</p>
+            <div class="column-1">
+                <section class="dashboard-texts">
+                    <p class="info-text">Exercícios resolvidos ao todo</p>
+                    <p class="info-text">Exercícios de Programação resolvidos</p>
+                    <p class="info-text">Exercícios de Matematica resolvidos</p>
+                    <p class="info-text">Exercícios de Física resolvidos</p>
+                    <p class="info-text">Simulados resolvidos</p>
+                    <p class="info-text">Maior sequência de consistência</p>
+                </section>
+    
+                <section class="dashboard-numbers">
+                    <p class="info-text">0</p>
+                    <p class="info-text">0</p>
+                    <p class="info-text">0</p>
+                    <p class="info-text">0</p>
+                    <p class="info-text">0</p>
+                    <p class="info-text">0</p>
+                </section>
+            </div>
+
+            <div class="column-2">
+                
+            </div>
         </div>
 
         <div class="graphic-1">
 
         </div>
+
+        <div class="graphic-2"></div>
     </main>
 </template>
 
@@ -67,6 +87,14 @@
         border-radius: 30px;
         margin: 10px 0px 0px 20px;
         padding: 40px;
+    }
+
+    .column-1{
+        display: flex;
+    }
+
+    .dashboard-numbers{
+        padding-left: 500px;
     }
 
     .info-text{
