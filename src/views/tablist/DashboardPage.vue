@@ -3,7 +3,7 @@
         <div class="profile-container">
             <img class="profile-pic" src="../assets/images/indian-guy.png" alt="profile-pic">
             <div class="profile-info">
-                <h1> Márcio Vitor </h1>
+                <h1> {{username}} </h1>
                 <p> Level 10 </p>
             </div>
         </div>
@@ -43,7 +43,17 @@
     </main>
 </template>
 
-<script setup>
+<script>
+import { useUserStore } from '@/stores/userStore';
+
+export default {
+  name: 'Dashboard',
+  setup() {
+    const userStore = useUserStore();
+
+    return {username: userStore.user?.username}
+  }
+}
 </script>
 
 <style >

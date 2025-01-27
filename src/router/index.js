@@ -1,30 +1,20 @@
-import { createRouter, createWebHistory } from 'vue-router';
-
-import DashboardPage from '@/views/DashboardPage.vue';
-import GerarProblema from '@/views/GerarProblema.vue';
-import LandingPage from '@/views/LandingPage.vue';
-
-const routes = [
-  {
-    path: '/',
-    name: 'landing-page',
-    component: LandingPage,
-  },
-  {
-    path: '/dashboard-page',
-    name: 'dashboard-page',
-    component: DashboardPage,
-  },
-  {
-    path: '/gerar-problema',
-    name: 'gerar-problema',
-    component: GerarProblema,
-  }
-];
+import { createRouter, createWebHistory } from "vue-router";
+import routes from "./routes";
+import { useUserStore } from "../stores/userStore";
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, _from, next) => {
+  const userStore = useUserStore();
+
+  if (to.path === "/" && userStore.isAuthenticated) {
+    next("/dashboard");
+  } else {
+    next();
+  }
 });
 
 export default router;

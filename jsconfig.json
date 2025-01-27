@@ -5,7 +5,7 @@
       "@/*": ["src/*"]
     },
     "allowJs": true,
-    "checkJs": false,
+    "checkJs": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
