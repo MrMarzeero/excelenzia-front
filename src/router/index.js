@@ -19,7 +19,7 @@ const routes = [
     path: '/gerar-problema',
     name: 'gerar-problema',
     component: GerarProblema,
-  }
+  },
 ];
 
 const router = createRouter({

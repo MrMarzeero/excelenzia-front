@@ -3,43 +3,55 @@
         <div class="profile-container">
             <img class="profile-pic" src="../assets/images/indian-guy.png" alt="profile-pic">
             <div class="profile-info">
-                <h1> Márcio Vitor </h1>
+                <h1> Shivanshika </h1>
                 <p> Level 10 </p>
             </div>
         </div>
-
         
-        <div class="dashboard-infos">
+        <div class="container-geral">
             <div class="column-1">
-                <section class="dashboard-texts">
-                    <p class="info-text">Exercícios resolvidos ao todo</p>
-                    <p class="info-text">Exercícios de Programação resolvidos</p>
-                    <p class="info-text">Exercícios de Matematica resolvidos</p>
-                    <p class="info-text">Exercícios de Física resolvidos</p>
-                    <p class="info-text">Simulados resolvidos</p>
-                    <p class="info-text">Maior sequência de consistência</p>
-                </section>
+                <div class="dashboard-infos">
+                        <section class="dashboard-texts">
+                            <p class="info-text">Exercícios resolvidos ao todo</p>
+                            <p class="info-text">Exercícios de Programação resolvidos</p>
+                            <p class="info-text">Exercícios de Matematica resolvidos</p>
+                            <p class="info-text">Exercícios de Física resolvidos</p>
+                            <p class="info-text">Simulados resolvidos</p>
+                            <p class="info-text">Maior sequência de consistência</p>
+                        </section>
+            
+                        <section class="dashboard-numbers">
+                            <p class="info-text">0</p>
+                            <p class="info-text">0</p>
+                            <p class="info-text">0</p>
+                            <p class="info-text">0</p>
+                            <p class="info-text">0</p>
+                            <p class="info-text">0</p>
+                        </section>
+                </div>
+        
+                <div class="graphic-1">
+        
+                </div>
+            </div>
     
-                <section class="dashboard-numbers">
-                    <p class="info-text">0</p>
-                    <p class="info-text">0</p>
-                    <p class="info-text">0</p>
-                    <p class="info-text">0</p>
-                    <p class="info-text">0</p>
-                    <p class="info-text">0</p>
-                </section>
-            </div>
-
-            <div class="column-2">
-                
-            </div>
+            <aside class="column-2">
+                <div class="container-double-form">
+                    <div class="form-1">
+                        
+                    </div>
+    
+                    <div class="form-1">
+                        
+                    </div>
+                </div>
+    
+                <div class="form-2">
+                    
+                </div>
+            </aside>
         </div>
 
-        <div class="graphic-1">
-
-        </div>
-
-        <div class="graphic-2"></div>
     </main>
 </template>
 
@@ -50,8 +62,8 @@
     .dashboard-content{
         background-color: #06253E;
         color: whitesmoke;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 90vh;
     }
 
     .profile-container{
@@ -60,8 +72,8 @@
     }
 
     .profile-pic{
-        width: 150px;
-        height: 150px;
+        width: 10rem;
+        height: 10rem;
         object-fit: cover; 
         margin: 0px 40px 0px 0px;
         border-radius: 50%;
@@ -79,18 +91,27 @@
         font-style: normal;
     }
 
+    .container-geral{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
     .dashboard-infos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #02182A;
-        color: whitesmoke;
-        width: 55%;
-        height: 380px;
+        width: 55vw;
+        height: 40vh;
         border-radius: 30px;
-        margin: 10px 0px 0px 20px;
+        margin: 0px 0px 0px 20px;
         padding: 40px;
     }
 
     .column-1{
-        display: flex;
+        color: white;
     }
 
     .dashboard-numbers{
@@ -99,16 +120,35 @@
 
     .info-text{
         padding: 10px;
-        font-size: 20px;
+        font-size: 1.3rem;
     }
 
     .graphic-1{
         background-color: #02182A;
         color: whitesmoke;
-        width: 55%;
-        height: 250px;
+        width: 55vw;
+        height: 27.5vh;
         border-radius: 30px;
         margin: 10px 0px 0px 20px;
+    }
+
+    .container-double-form{
+        display: flex;
+        gap: 10px;
+    }
+
+    .form-1{
+        background-color: #02182A;
+        width: 20vw;
+        border-radius: 30px;
+        height: 35vh;
+    }
+
+    .form-2{
+        background-color: #02182A;
+        margin-top: 10px;
+        border-radius: 30px;
+        height: 32.5vh;
     }
 
 
