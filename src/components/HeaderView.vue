@@ -5,9 +5,8 @@
             <img class="star-logo-img" src="../assets/images/star-removebg-preview.png" alt="star">
         </div>
         <nav>
-            <!-- <router-link class="nav-item" to="/" >Home</router-link> -->
-            <router-link class="nav-item" to="/dashboard-page" >Dashboard</router-link>
-            <router-link class="nav-item" to="/gerar-problema" >Geração de Problemas</router-link>
+            <router-link class="nav-item dashboard-link" to="/dashboard-page">Dashboard</router-link>
+            <router-link class="nav-item gerar-problema-link" to="/gerar-problema">Geração de Problemas</router-link>
         </nav>
     </header>
 </template>
@@ -28,50 +27,51 @@
 header {
     background-color: #02182A;
     background-size: cover;
-    width: 100%;
-    height: 122px;
-    
+    width: 100vw;
+    height: 12vh;
 }
 
-.title-container{
+.title-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.title{
+.title {
     color: #D3E7F8;
-    font-size: 40px;
-    padding: 14px 0px 10px 20px;
+    font-size: 2rem;
+    padding: 1rem 0px 10px 20px;
     font-family: "Poppins", serif;
-    font-weight: 700;
+    font-weight: 800;
     font-style: normal;
 }
 
-.secondary{
+.secondary {
     color: #6BBEDC;
-    padding: 14px 0px 10px 0px;
-
+    padding: 1rem 0px 10px 0px;
 }
 
-.star-logo-img{
-    width: 60px;
-    height: 40px;
-    margin: 2px 0px 0px 0px;
+.star-logo-img {
+    width: 2rem;
+    height: 3rem;
+    margin: 2px 0px 0px 5px;
     object-fit: cover; 
 }
 
-nav{
+nav {
     display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
     color: #A0B8CB;
     justify-content: flex-start;
-    
+    height: 1vh;
 }
 
-.nav-item{
-    padding: 3px 20px;
+.nav-item {
+    padding: 0.2rem 2rem;
     font-family: "Poppins", serif;
-    font-weight: 550;
+    font-weight: 515;
+    font-size: 1rem;
     font-style: normal;
     position: relative; 
 }
@@ -79,20 +79,20 @@ nav{
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -5px; 
+    bottom: -0.6rem; 
     left: 0;
     width: 0; 
-    height: 1px;
+    height: 0.1rem;
     background-color: #ffffff;
     transition: all 0.3s ease; 
 }
 
-.nav-item:hover{
+.nav-item:hover {
     color: #c9d7e2;
     transition: 0.3s;
 }
 
-.router-link-active{
+.router-link-active {
     color: white;
     transition: 0.5s;
 }
@@ -101,5 +101,17 @@ nav{
     width: 100%; 
 }
 
+.dashboard-link.router-link-active::before {
+    content: '📊'; 
+    margin-right: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+}
 
+.gerar-problema-link.router-link-active::before {
+    content: '🛠️'; 
+    margin-right: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+}
 </style>
