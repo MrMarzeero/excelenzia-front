@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import EXSelect from '../../../components/input/EXSelect.vue';
-import Modal from '../../../components/Modal.vue';
+import Modal from '../../../components/EXModal.vue';
 
 import 'highlight.js/lib/common';
 import hljsVuePlugin from "@highlightjs/vue-plugin";

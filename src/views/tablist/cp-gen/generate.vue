@@ -3,7 +3,7 @@ import EXSelect from '../../../components/input/EXSelect.vue';
 import SelectionPanel from '../../../components/input/SelectionPanel.vue';
 import { useGenerateModel } from '../../../composables/useGenerateModel';
 import ProblemView from '../../../components/ProblemView.vue';
-import Tabs from '../../../components/problems/Tabs.vue';
+import Tabs from '../../../components/problems/TabsHeader.vue';
   
   export default {
     name: 'Generate',

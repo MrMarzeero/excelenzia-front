@@ -1,5 +1,5 @@
 <script>
-  import Navbar from '../components/Navbar.vue';
+  import Navbar from '../components/EXNavBar.vue';
   import TabList from '../components/TabList.vue';
 
   export default {

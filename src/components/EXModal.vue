@@ -1,6 +1,6 @@
-<script lang="ts">
+<script>
 export default {
-  name: 'Modal',
+  name: 'EXModal',
   props: {
     modelValue: {
       type: Boolean,
@@ -11,7 +11,7 @@ export default {
     closeModal() {
       this.$emit('update:modelValue', false);
     },
-    handleOverlayClick(event: MouseEvent) {
+    handleOverlayClick(event) {
       if (event.target === event.currentTarget) {
         this.closeModal();
       }

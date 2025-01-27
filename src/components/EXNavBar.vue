@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'Navbar'
+  name: 'EXNavbar'
 }
 </script>
 <template>

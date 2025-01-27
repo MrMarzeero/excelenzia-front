@@ -1,32 +1,32 @@
 <script>
-  import Navbar from '../components/Navbar.vue';
+  import Navbar from '../components/EXNavbar.vue';
   import TabList from '../components/TabList.vue';
-  import Tabs from '../components/problems/Tabs.vue';
+  import TabsHeader from '../components/problems/TabsHeader.vue';
   import ProblemView from '../components/ProblemView.vue';
 
   export default {
     name: 'ProblemLayout',
     components: {
-      Navbar, TabList, ProblemView, Tabs
+      Navbar, TabList, ProblemView, TabsHeader
     },
     data() {
       return {
-        _resizing: false,
-        _wrapper_left: -1,
-        _wrapper_width: -1,
+        resizing: false,
+        wrapper_left: -1,
+        wrapper_width: -1,
         mainSize : '600px'
       }
     },
     methods: {
       handleDown() {
-        this._resizing = true;
+        this.resizing = true;
       },
       handleUp() {
-        this._resizing = false;
+        this.resizing = false;
       },
       handleMove(event) {
-        if (!this._resizing) return;
-        this.mainSize = `${event.clientX - this._wrapper_left}px`;
+        if (!this.resizing) return;
+        this.mainSize = `${event.clientX - this.wrapper_left}px`;
         console.log(this.mainSize)
       }
     },
@@ -34,8 +34,8 @@
       const wrapper = document.querySelector('.wrapper')
       window.onmouseup = this.handleUp;
       window.onmousemove = this.handleMove
-      if (wrapper) this._wrapper_left = wrapper.getBoundingClientRect().left
-      if (wrapper) this._wrapper_width = wrapper.getBoundingClientRect().width
+      if (wrapper) this.wrapper_left = wrapper.getBoundingClientRect().left
+      if (wrapper) this.wrapper_width = wrapper.getBoundingClientRect().width
     }
   }
 </script>
@@ -46,13 +46,13 @@
     <TabList />
     <div class="wrapper" >
       <div class="main-content" :style="{'width': mainSize}">
-        <Tabs />
+        <TabsHeader />
         <RouterView />
       </div>
       <div class="splitter" @mousedown="handleDown">
         <ion-icon name="remove-outline" size="large"></ion-icon>
       </div>
-      <ProblemView :style="{'width': `${_wrapper_width - parseInt(mainSize)}px`}"/>
+      <ProblemView :style="{'width': `${wrapper_width - parseInt(mainSize)}px`}"/>
     </div>
   </div>
 </template>

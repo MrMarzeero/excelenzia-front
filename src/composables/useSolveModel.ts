@@ -32,7 +32,7 @@ export function useSolveModel() {
       );
       console.log(response);
       result.value = response.data.body.data;
-    } catch (err) {
+    } catch (err: any) {
       error.value = err.response?.data?.message || "An error occured.";
     } finally {
       loading.value = false;

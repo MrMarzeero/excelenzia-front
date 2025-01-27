@@ -1,4 +1,8 @@
-<script lang="ts">
+<script></script>
+<template>
+  <h1>hello</h1>
+</template>
+<!-- <script lang="ts">
 import { ref, onMounted, PropType } from 'vue';
 // TODO: word list should be passed as props from parent
 
@@ -105,4 +109,4 @@ export default {
       opacity: 0;
     }
   }
-</style>
+</style> -->

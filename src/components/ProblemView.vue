@@ -4,7 +4,7 @@ import { useProblemStore } from '../stores/problemStore';
 import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
 import katex from 'katex';
 
-function renderLatex(content) {
+function renderLatex(content: string) {
   return content.replace(/\$(.+?)\$/g, (match, p1) => {
     try {
       return katex.renderToString(p1, { throwOnError: false });

@@ -1,5 +1,5 @@
 <script>
-  import Navbar from '../components/Navbar.vue';
+  import Navbar from '../components/EXNavBar.vue';
 
   export default {
     name: 'MainLayout',
