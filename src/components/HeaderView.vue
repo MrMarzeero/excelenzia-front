@@ -8,6 +8,9 @@
             <!-- <router-link class="nav-item" to="/" >Home</router-link> -->
             <router-link class="nav-item" to="/dashboard-page" >Dashboard</router-link>
             <router-link class="nav-item" to="/gerar-problema" >Geração de Problemas</router-link>
+            <router-link class="nav-item" to="/home-problemas" >Home geração de problemas</router-link>
+            
+           
         </nav>
     </header>
 </template>
