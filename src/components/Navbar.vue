@@ -5,82 +5,36 @@ export default {
 </script>
 <template>
   <header>
-    <div>
-      <nav>
-        <ul class="nav-items">
-          <li><a href="https://github.com/vitorS01/dream-code" target="_blank">Github</a></li>
-          <li><RouterLink to="/contact">Contato</RouterLink></li>
-        </ul>
-      </nav>
-      <div class="logo" style="display:flex; align-items: center;">
-        <ion-icon name="chevron-back-outline" aria-hidden="true"></ion-icon>
-        <RouterLink to="/">DreamCode</RouterLink>
-        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-      </div>
-      <nav>
-        <ul class="nav-items">
-          <li><RouterLink to="/guide">Como funciona?</RouterLink></li>
-          <li><RouterLink to="/about-us">Sobre</RouterLink></li>
-        </ul>
-      </nav>
-    </div>
-
-    
+    <h1>Excelenz</h1><h1 class="secondary">IA</h1>
+    <img class="star-logo-img" src="../assets/images/star-removebg-preview.png" alt="star">
   </header>
 </template>
 
 <style scoped>
-  header {
-    width: 100%;
-    height: 4rem;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background: none;
-  }
+header {
+  width: 100%;
+  height: 4rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--blue-600);
+}
+header > h1 {
+  color: #D3E7F8;
+  font-size: 2rem;
+  padding: 1rem 0px 10px 20px;
+  font-weight: 800;
+}
+.secondary {
+  color: #6BBEDC;
+  padding: 1rem 0px 10px 0px;
+}
 
-  header > div {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo {
-    margin: 0 2rem;
-  }
-
-  .logo > a {
-    font-size: 2.2rem;
-    font-weight: bold;
-  }
-
-  .nav-items {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .nav-items > li > a {
-    opacity: .9;
-  }
-
-  a {
-    font-size: 1rem;
-    text-decoration: none;
-    color: inherit;
-    transition: opacity .1s ease-in;
-  }
-  .nav-items > li > a:hover {
-    opacity: 1;
-  }
-
-  .logo > ion-icon {
-    stroke-width: 40px;
-    display: flex;
-    font-size: 24px;
-    color: #882df0;
-    transform: translateY(2px);
-  }
-
-  
+.star-logo-img {
+  width: 2rem;
+  height: 3rem;
+  margin: 2px 0px 0px 5px;
+  object-fit: cover; 
+}
 
 </style>

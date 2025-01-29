@@ -12,8 +12,8 @@
 
 <template>
   <Navbar></Navbar>
+  <TabList />
   <div class="main-wrapper">
-    <TabList />
     <RouterView />
   </div>
 </template>

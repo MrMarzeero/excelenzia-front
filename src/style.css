@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --accent: #7D48BA;
-  --primary: #4444EC;
+  --accent: #02182A;
+  --primary: #02182A;
   --secondary: #75DDDD;
 
   --white: #F5F5F5;
 
   --grey-400: #6B6B6B;
 
-  --blue-500: #4A4A81;
-  --blue-600: #303057;
+  --blue-500: #145d99;
+  --blue-600: #02182A;
   --blue-800: #1E1E39;
-  --blue-900: #1E1E2F;
+  --blue-900: #06253E;
 
 }
 
