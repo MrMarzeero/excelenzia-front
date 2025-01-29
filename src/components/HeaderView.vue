@@ -28,7 +28,7 @@ header {
     background-color: #02182A;
     background-size: cover;
     width: 100vw;
-    height: 12vh;
+    max-height: 14vh;
 }
 
 .title-container {
@@ -61,10 +61,10 @@ header {
 nav {
     display: flex;
     align-items: center;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     color: #A0B8CB;
     justify-content: flex-start;
-    height: 1vh;
+    padding-bottom: 0.7rem;
 }
 
 .nav-item {
@@ -79,7 +79,7 @@ nav {
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -0.2rem; 
+    bottom: -0.5rem; 
     left: 0;
     width: 0; 
     height: 0.1rem;
