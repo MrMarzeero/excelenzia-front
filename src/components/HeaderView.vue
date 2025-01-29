@@ -40,7 +40,7 @@ header {
 .title {
     color: #D3E7F8;
     font-size: 2rem;
-    padding: 1rem 0px 10px 20px;
+    padding: 1.5rem 0px 10px 1.8rem;
     font-family: "Poppins", serif;
     font-weight: 800;
     font-style: normal;
@@ -48,13 +48,13 @@ header {
 
 .secondary {
     color: #6BBEDC;
-    padding: 1rem 0px 10px 0px;
+    padding: 1.5rem 0px 10px 0px;
 }
 
 .star-logo-img {
     width: 2rem;
     height: 3rem;
-    margin: 2px 0px 0px 5px;
+    margin: 0.6rem 0px 0px 5px;
     object-fit: cover; 
 }
 
@@ -79,7 +79,7 @@ nav {
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -0.6rem; 
+    bottom: -0.2rem; 
     left: 0;
     width: 0; 
     height: 0.1rem;
