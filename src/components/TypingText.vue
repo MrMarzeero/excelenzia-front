@@ -1,18 +1,14 @@
-<script></script>
-<template>
-  <h1>hello</h1>
-</template>
-<!-- <script lang="ts">
-import { ref, onMounted, PropType } from 'vue';
+<script lang="ts">
+import { ref, onMounted } from 'vue';
 // TODO: word list should be passed as props from parent
 
 export default {
   name: 'TypingText',
   props: {
     wordList: {
-      type: Array as PropType<string[]>,
+      type: Array as () => string[],
       required: false,
-      default: () => ["Create", "Compete", "Code", "Imagine"],
+      default: ["Create", "Compete", "Code", "Imagine"],
     },
     typingSpeed: {
       type: Number,
@@ -109,4 +105,4 @@ export default {
       opacity: 0;
     }
   }
-</style> -->
+</style>

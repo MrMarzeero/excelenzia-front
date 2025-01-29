@@ -1,10 +1,10 @@
 <script lang="ts">
 import { computed } from 'vue';
-import { useProblemStore } from '../stores/problemStore';
+import { useProblemStore } from '../stores/ProblemStore';
 import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
 import katex from 'katex';
 
-function renderLatex(content: string) {
+function renderLatex(content: string): string {
   return content.replace(/\$(.+?)\$/g, (match, p1) => {
     try {
       return katex.renderToString(p1, { throwOnError: false });

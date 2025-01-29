@@ -1,15 +1,16 @@
 import { defineStore } from "pinia";
+import { ProblemTemplate } from "../types";
 
 export const useProblemStore = defineStore("problemStore", {
   state: () => ({
-    result: null,
+    result: null as ProblemTemplate | null,
     loading: false,
   }),
   actions: {
-    setResult(newResult) {
+    setResult(newResult: ProblemTemplate) {
       this.result = newResult;
     },
-    setLoadingState(state) {
+    setLoadingState(state: boolean) {
       this.loading = state;
     },
   },

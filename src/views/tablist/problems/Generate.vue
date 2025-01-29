@@ -1,13 +1,13 @@
 <script lang="ts">
-import EXSelect from '../../../components/input/EXSelect.vue';
+import DCSelect from '../../../components/input/DCSelect.vue';
 import SelectionPanel from '../../../components/input/SelectionPanel.vue';
 import { useGenerateModel } from '../../../composables/useGenerateModel';
 import ProblemView from '../../../components/ProblemView.vue';
-import Tabs from '../../../components/problems/TabsHeader.vue';
+import Tabs from '../../../components/problems/Tabs.vue';
   
   export default {
     name: 'Generate',
-    components: {SelectionPanel, EXSelect, ProblemView, Tabs},
+    components: {SelectionPanel, DCSelect, ProblemView, Tabs},
     setup() {
       const { formData, loading, error, submitForm } = useGenerateModel();
 
@@ -35,10 +35,10 @@ import Tabs from '../../../components/problems/TabsHeader.vue';
     <SelectionPanel id="selection" v-model="formData.topics"/>
     
     <label for="difficulty">Dificuldade</label>
-    <EXSelect class="text-sm" v-model="formData.level" id="difficulty" name="difficulty" :options="[{label: 'Fácil', value: 'Easy'}, {label: 'Médio', value: 'Medium'}, {label: 'Difícil', value: 'Hard'}, {label: 'Insano', value:'Insane'}]" selected="Easy"></EXSelect>
+    <DCSelect class="text-sm" v-model="formData.level" id="difficulty" name="difficulty" :options="[{label: 'Fácil', value: 'Easy'}, {label: 'Médio', value: 'Medium'}, {label: 'Difícil', value: 'Hard'}, {label: 'Insano', value:'Insane'}]" selected="Easy"></DCSelect>
 
     <label for="language">Idioma</label>
-    <EXSelect class="text-sm" v-model="formData.language" id="language" name="language" :options="[{label: 'Português', value: 'Portuguese'}, {label: 'Inglês', value: 'English'}]" selected="Portuguese"></EXSelect>
+    <DCSelect class="text-sm" v-model="formData.language" id="language" name="language" :options="[{label: 'Português', value: 'Portuguese'}, {label: 'Inglês', value: 'English'}]" selected="Portuguese"></DCSelect>
 
     <button class="text-sm" type="submit" :disabled="loading">Gerar problema</button>
   </form>

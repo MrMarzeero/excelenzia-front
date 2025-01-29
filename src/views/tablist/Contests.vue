@@ -1,10 +1,13 @@
 <script lang="ts">
   export default {
-    name: 'App'
+    name: 'Contests'
   }
 </script>
 
 <template>
-  <router-view/>
+  Hi Contests!
 </template>
 
+<style scoped>
+
+</style>

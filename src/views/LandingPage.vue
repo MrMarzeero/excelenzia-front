@@ -1,10 +1,11 @@
 <script lang="ts">
+  import Cloud from '../components/Cloud.vue';
   import TypingText from '../components/TypingText.vue';
   
 
   export default {
     name: 'LandingPage',
-    components: {TypingText},
+    components: {Cloud, TypingText},
   }
 </script>
 
@@ -53,6 +54,8 @@
     font-weight: normal;
     color: #b8b8b8;
   }
+
+  
 
   .btns {
     display: flex;

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ref } from 'vue';
-import EXSelect from '../../../components/input/EXSelect.vue';
-import Modal from '../../../components/EXModal.vue';
+import DCSelect from '../../../components/input/DCSelect.vue';
+import Modal from '../../../components/Modal.vue';
 
 import 'highlight.js/lib/common';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
@@ -10,7 +10,7 @@ import SkeletonPlaceholder from '../../../components/SkeletonPlaceholder.vue';
 
 export default {
   name: 'Solve',
-  components: {EXSelect, Modal, highlightjs:hljsVuePlugin.component, SkeletonPlaceholder},
+  components: {DCSelect, Modal, highlightjs:hljsVuePlugin.component, SkeletonPlaceholder},
   data() {
     return {content: ''}
   },
@@ -43,11 +43,11 @@ export default {
       <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
       <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
     </div>
-<!-- <highlightjs v-else autodetect :code="result?.solution"/> -->
+<highlightjs v-else autodetect :code="result?.solution"/>
   </Modal>
   <div class="header">
     <h2>Código de resolução</h2>
-    <EXSelect v-model="formData.language" id="language" name="language" :options="[{label: 'C++', value: 'CPP'}, {label: 'Python', value: 'PY'}, {label: 'JavaScript', value: 'JS'}]" selected="CPP"/>
+    <DCSelect v-model="formData.language" id="language" name="language" :options="[{label: 'C++', value: 'CPP'}, {label: 'Python', value: 'PY'}, {label: 'JavaScript', value: 'JS'}]" selected="CPP"/>
   </div>
   <textarea v-model="content" id="editor"></textarea>
   <div class="btns">

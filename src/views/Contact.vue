@@ -1,10 +1,13 @@
 <script lang="ts">
   export default {
-    name: 'App'
+    name: 'Contact'
   }
 </script>
 
 <template>
-  <router-view/>
+  Hi contact!
 </template>
 
+<style scoped>
+
+</style>

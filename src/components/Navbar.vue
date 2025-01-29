@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'EXNavbar'
+  name: 'Navbar'
 }
 </script>
 <template>
@@ -80,4 +80,7 @@ export default {
     color: #882df0;
     transform: translateY(2px);
   }
+
+  
+
 </style>

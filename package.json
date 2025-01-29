@@ -1,58 +1,30 @@
 {
-  "name": "excelenzia-pages",
-  "version": "0.1.0",
+  "name": "dream-code",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
-    "@vue/cli-plugin-router": "^5.0.8",
-    "@vue/cli-plugin-vuex": "^5.0.8",
-    "@vue/compiler-sfc": "^3.5.13",
-    "axios": "^1.7.9",
+    "axios": "^1.7.7",
     "codemirror": "^6.0.1",
-    "core-js": "^3.8.3",
-    "highlight.js": "^11.11.1",
-    "katex": "^0.16.21",
-    "pinia": "^2.3.1",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "highlight.js": "^11.10.0",
+    "katex": "^0.16.11",
+    "pinia": "^2.2.6",
+    "prismjs": "^1.29.0",
+    "vue": "^3.5.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^5.0.8",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "html-webpack-plugin": "^5.6.3",
-    "vue-loader": "^16.8.3",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.15.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "@types/codemirror": "^5.60.15",
+    "@types/katex": "^0.16.7",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.9",
+    "vue-router": "^4.4.5",
+    "vue-tsc": "^2.1.6"
+  }
 }

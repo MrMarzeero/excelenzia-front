@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 export default {
-  name: 'SkeletonPlaceholder',
+  name: 'Skeleton',
   props: {
     width: {
       type: String,

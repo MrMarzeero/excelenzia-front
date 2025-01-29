@@ -39,7 +39,7 @@ export function useGenerateModel() {
       result.value = response.data.body.data;
       problemStore.setLoadingState(false);
       if (result.value) problemStore.setResult(result.value);
-    } catch (err) {
+    } catch (err: any) {
       error.value = err.response?.data?.message || "An error occured.";
     } finally {
       loading.value = false;
