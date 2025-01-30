@@ -85,8 +85,9 @@
     .dashboard-content{
         background-color: #06253E;
         color: whitesmoke;
-        width: 100vw;
-        height: 88vh;
+        max-width: 100%;
+        height: 89vh;
+        overflow-x: hidden;
     }
 
     .profile-container{

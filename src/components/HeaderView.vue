@@ -27,7 +27,7 @@
 header {
     background-color: #02182A;
     background-size: cover;
-    width: 100vw;
+    max-width: 100%;
     max-height: 14vh;
 }
 
