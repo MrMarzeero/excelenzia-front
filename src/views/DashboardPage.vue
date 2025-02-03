@@ -39,7 +39,7 @@
                 <div class="container-double-form">
                     <div class="form-1 container">
                         <h3 class="consistency-title">Sequência de consistência:</h3>
-                        <h1 class="consistency-num">3</h1>
+                        <h1 class="consistency-num">0</h1>
                     </div>
     
                     <div class="form-1 container">
