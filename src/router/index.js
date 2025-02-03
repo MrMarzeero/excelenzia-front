@@ -23,21 +23,6 @@ const routes = [
     path: '/gerar-problema',
     name: 'gerar-problema',
     component: GerarProblema,
-  },
-  {
-    path: '/home-problemas',
-    nome: 'home-problemas',
-    component: HomeProblemas,
-  },
-  {
-    path: '/tipo-de-simulado',
-    nome: 'tipo-de-simulado',
-    component: TipodeSimulado,
-  },
-  {
-    path: '/escolha-de-personalizado',
-    nome: 'escolha-de-personalizado',
-    component: EscolhadePersonalizado,
   }
 ];
 

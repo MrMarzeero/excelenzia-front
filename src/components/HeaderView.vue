@@ -31,50 +31,51 @@
 header {
     background-color: #02182A;
     background-size: cover;
-    width: 100%;
-    height: 122px;
-    
+    max-width: 100%;
+    max-height: 14vh;
 }
 
-.title-container{
+.title-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.title{
+.title {
     color: #D3E7F8;
-    font-size: 40px;
-    padding: 14px 0px 10px 20px;
+    font-size: 2rem;
+    padding: 1.5rem 0px 10px 1.8rem;
     font-family: "Poppins", serif;
-    font-weight: 700;
+    font-weight: 800;
     font-style: normal;
 }
 
-.secondary{
+.secondary {
     color: #6BBEDC;
-    padding: 14px 0px 10px 0px;
-
+    padding: 1.5rem 0px 10px 0px;
 }
 
-.star-logo-img{
-    width: 60px;
-    height: 40px;
-    margin: 2px 0px 0px 0px;
+.star-logo-img {
+    width: 2rem;
+    height: 3rem;
+    margin: 0.6rem 0px 0px 5px;
     object-fit: cover; 
 }
 
-nav{
+nav {
     display: flex;
+    align-items: center;
+    margin-top: 0.4rem;
     color: #A0B8CB;
     justify-content: flex-start;
-    
+    padding-bottom: 0.7rem;
 }
 
-.nav-item{
-    padding: 3px 20px;
+.nav-item {
+    padding: 0.2rem 2rem;
     font-family: "Poppins", serif;
-    font-weight: 550;
+    font-weight: 515;
+    font-size: 1rem;
     font-style: normal;
     position: relative; 
 }
@@ -82,20 +83,20 @@ nav{
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -5px; 
+    bottom: -0.5rem; 
     left: 0;
     width: 0; 
-    height: 1px;
+    height: 0.1rem;
     background-color: #ffffff;
     transition: all 0.3s ease; 
 }
 
-.nav-item:hover{
+.nav-item:hover {
     color: #c9d7e2;
     transition: 0.3s;
 }
 
-.router-link-active{
+.router-link-active {
     color: white;
     transition: 0.5s;
 }
@@ -104,5 +105,17 @@ nav{
     width: 100%; 
 }
 
+.dashboard-link.router-link-active::before {
+    content: '📊'; 
+    margin-right: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+}
 
+.gerar-problema-link.router-link-active::before {
+    content: '🛠️'; 
+    margin-right: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+}
 </style>
