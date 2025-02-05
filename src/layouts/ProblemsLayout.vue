@@ -42,8 +42,8 @@
 
 <template>
   <Navbar></Navbar>
+  <TabList />
   <div class="main-wrapper">
-    <TabList />
     <div class="wrapper" >
       <div class="main-content" :style="{'width': mainSize}">
         <Tabs />

@@ -8,9 +8,8 @@
   <div class="tablist">
     <ul>
       <li><RouterLink to="/dashboard">Dashboard</RouterLink></li>
-      <li><RouterLink to="/problems/generate" :class="{ active: $route.path.startsWith('/problems') }">Gere um problema</RouterLink></li>
-      <li><RouterLink to="/problems">Exercicios</RouterLink></li>
-      <li><RouterLink to="/contests">Calendário de competições</RouterLink></li>
+      <li><RouterLink to="/quiz">Simulados</RouterLink></li>
+      <li><RouterLink to="/problems/generate" :class="{ active: $route.path.startsWith('/problems') }">Programação</RouterLink></li>
     </ul>
   </div>
 </template>

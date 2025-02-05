@@ -29,8 +29,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("../views/tablist/Problems.vue"),
       },
       {
-        path: "contests",
-        component: () => import("../views/tablist/Contests.vue"),
+        path: "quiz",
+        component: () => import("../views/tablist/quiz/Generate.vue"),
       },
     ],
   },
@@ -45,10 +45,6 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "solve",
         component: () => import("../views/tablist/problems/Solve.vue"),
-      },
-      {
-        path: "testcases",
-        component: () => import("../views/tablist/problems/Testcases.vue"),
       },
     ],
   },

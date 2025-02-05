@@ -22,7 +22,7 @@ const userStore = useUserStore();
 userStore.login({
   email: "test@example.com",
   id: "123",
-  username: "Thiago Nepomuceno",
+  username: "Otávio vitor",
 });
 
 import router from "./router";

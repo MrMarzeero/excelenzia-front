@@ -12,15 +12,15 @@ import { useUserStore } from '../../stores/userStore';
 </script>
 
 <template>
+  <div class="profile">
+    <img src="../../assets/images/pfp.jpg" alt="profile pic" />
+    <div class="profile-info">
+      <h2>{{ username }}</h2>
+      <p>Level: 8000+</p>
+    </div>
+  </div>
   <div class="dashboard-wrapper">
     <div class="main-content">
-      <div class="profile">
-        <img src="https://api.neps.academy/image/user-profile/1.png" alt="profile pic" />
-        <div class="profile-info">
-          <h2>{{ username }}</h2>
-          <p>Level: 8000+</p>
-        </div>
-      </div>
 
       <div class="pf-statistics">
         <span>Exercicios resolvidos: 3</span>
@@ -38,7 +38,7 @@ import { useUserStore } from '../../stores/userStore';
 <style scoped>
   .dashboard-wrapper {
     width: 100%;
-    height: calc(100vh - 10rem);
+    height: calc(80vh - 10rem);
     margin: 1rem 0;
     display: flex;
     gap: 1rem;
