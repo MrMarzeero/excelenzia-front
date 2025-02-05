@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 86vh;
     background-color: #02182A; 
     color: #FFFFFF;
     text-align: center;
@@ -31,13 +31,13 @@
 .buttons{
     margin-top: 2rem;
     display: flex;
-    flex-direction: column; /* Coluna para alinhar título e botões */
+    flex-direction: column; 
     align-items: center;
     gap: 2rem;
 }
 
 .opcoes{
-    width: 400px; /* Largura fixa */
+    width: 400px; 
     padding: 1.5rem;
     border-radius: 1rem;
     background-color: #0B2B52;
@@ -50,7 +50,7 @@
 }
 .opcoes:hover {
     transform: scale(1.05);
-    background-color: #0c376b; /* Alteração de cor no hover */
+    background-color: #0c376b; /*Alteração de cor no hover*/
 }
 
 .opcoes:active {

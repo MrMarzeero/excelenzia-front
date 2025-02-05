@@ -9,13 +9,20 @@
             <router-link class="nav-item" to="/dashboard-page" >Dashboard</router-link>
             <router-link class="nav-item" to="/gerar-problema" >Geração de Problemas</router-link>
             <router-link class="nav-item" to="/home-problemas" >Home geração de problemas</router-link>
+            <router-link class="nav-item" to="/biblioteca-problemas">Biblioteca Problemas </router-link>
+           
             
            
         </nav>
     </header>
 </template>
   
-<script setup> 
+<script setup>
+// eslint-disable-next-line no-unused-vars
+import router from '@/router';
+
+
+ 
 </script>
 
 <style scoped>

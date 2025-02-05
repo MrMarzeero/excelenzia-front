@@ -5,28 +5,31 @@
           <p>1. Clique em "Novo Simulado"</p>
           <p>2. Explore diversas opções de personalização</p>
           <p>3. Comece a resolver!</p>
-          <button class="criar-novo-simulado" @click="goToSimulado">Novo Simulado +</button>
+          <button class="criar-novo-simulado" @click="goToOpcoes">Novo Simulado +</button>
         </div>
       </main>
   </template>
   
   <script>
+  
 export default {
   methods: {
-    goToSimulado() {
-      this.$router.push('/Tipo-de-Simulado'); // Navega para o componente desejado
+    goToOpcoes() {
+      this.$router.push('/Escolha-de-Personalizado'); // Navega para o componente desejado
     },
   },
 };
 </script>
     
   <style>
+  
+
 
     .home-problems-content {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 86vh;
         background-color: #02182A;
         color: #D3E7F8;
     }

@@ -4,8 +4,8 @@ import DashboardPage from '@/views/DashboardPage.vue';
 import GerarProblema from '@/views/GerarProblema.vue';
 import LandingPage from '@/views/LandingPage.vue';
 import HomeProblemas from '@/views/HomeProblemas.vue';
-import TipodeSimulado from '@/views/TipodeSimulado.vue';
 import EscolhadePersonalizado from '@/views/EscolhadePersonalizado.vue';
+import BibliotecaProblemas from '@/views/BibliotecaProblemas.vue';
 
 
 const routes = [
@@ -23,6 +23,21 @@ const routes = [
     path: '/gerar-problema',
     name: 'gerar-problema',
     component: GerarProblema,
+  },
+  {
+    path: '/home-problemas',
+    nome: 'home-problemas',
+    component: HomeProblemas,
+  },
+  {
+    path: '/escolha-de-personalizado',
+    nome: 'escolha-de-personalizado',
+    component: EscolhadePersonalizado,
+  },
+  {
+    path: '/biblioteca-problemas',
+    nome: 'biblioteca-problemas',
+    component: BibliotecaProblemas,
   }
 ];
 
