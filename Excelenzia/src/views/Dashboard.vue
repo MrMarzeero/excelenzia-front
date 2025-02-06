@@ -125,29 +125,28 @@
         justify-content: center;
         gap: 0.8rem;
         margin-top: 1rem;
+
     }
 
     .dashboard-infos{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 53vw;
         height: 38vh;
         margin: 0px 0px 0px 20px;
         padding: 40px;
+        
     }
 
     .column-1{
         color: white;
     }
 
-    .dashboard-numbers{
-        padding-left: 500px;
-    }
-
     .info-text{
         padding: 10px;
-        font-size: 1.2rem;
+        font-size: 2vh;
+        white-space: nowrap;
     }
 
     .graphic-1{
@@ -177,7 +176,7 @@
     }
 
     .consistency-title{
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .chart-container{
