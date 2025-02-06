@@ -5,7 +5,7 @@
             <img class="star-logo-img" src="../assets/images/star-removebg-preview.png" alt="star">
         </div>
         <nav>
-            <router-link class="nav-item dashboard-link" to="/dashboard-page">Dashboard</router-link>
+            <router-link class="nav-item dashboard-link" to="/">Dashboard</router-link>
             <router-link class="nav-item gerar-problema-link" to="/gerar-problema">Geração de Problemas</router-link>
         </nav>
     </header>

@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import DCSelect from '../../../components/input/DCSelect.vue';
 import Modal from '../../../components/Modal.vue';
-
 import 'highlight.js/lib/common';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
 import { useSolveModel } from '../../composables/useSolveModel';
@@ -39,11 +38,12 @@ export default {
   <Modal v-model="showAns">
     <div class="placeholder" v-if="!result && loading">
       <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
-      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
+      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/> 
       <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
       <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
     </div>
-<highlightjs v-else autodetect :code="result?.solution"/>
+
+<highlightjs v-else autodetect :code="result?.solution ?? ''" />
   </Modal>
   <div class="header">
     <h2>Código de resolução</h2>
