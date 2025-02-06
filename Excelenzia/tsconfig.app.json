@@ -2,13 +2,15 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "moduleResolution": "node",
+    "allowJs": true,
     "esModuleInterop": true,
-    "strict": false,
     "skipLibCheck": true,
-    "types": ["vite/client"] 
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"]
 }
