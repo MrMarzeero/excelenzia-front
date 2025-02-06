@@ -7,6 +7,7 @@
         <nav>
             <router-link class="nav-item dashboard-link" to="/dashboard-page">Dashboard</router-link>
             <router-link class="nav-item gerar-problema-link" to="/gerar-problema">Geração de Problemas</router-link>
+            <router-link class="nav-item" to="/home-problemas">Geração de Problemas</router-link>
         </nav>
     </header>
 </template>
