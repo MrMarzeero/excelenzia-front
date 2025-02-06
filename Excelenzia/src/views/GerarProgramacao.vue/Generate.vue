@@ -1,7 +1,7 @@
 <script lang="ts">
 import DCSelect from '../../components/input/DCSelect.vue';
 import SelectionPanel from '../../components/input/SelectionPanel.vue';
-import { useGenerateModel } from '../../../composables/useGenerateModel';
+import { useGenerateModel } from "../../composables/useGenerateModel.ts";
 import ProblemView from '../../components/ProblemView.vue'
 import Tabs from "../../components/problems/Tabs.vue";
   

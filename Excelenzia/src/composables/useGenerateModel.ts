@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import axios, { AxiosError } from "axios";
-import { ProblemTemplate } from "../types";
-import { useProblemStore } from "../stores/ProblemStore";
+import type { ProblemTemplate } from "../../types";
+import { useProblemStore } from "../../stores/ProblemStore.ts";
 
 export function useGenerateModel() {
   const formData = ref({

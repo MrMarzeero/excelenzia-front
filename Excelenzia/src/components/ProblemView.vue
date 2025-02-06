@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed } from 'vue';
-import { useProblemStore } from '../stores/ProblemStore';
+import { useProblemStore } from '../../stores/ProblemStore';
 import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
 import katex from 'katex';
 

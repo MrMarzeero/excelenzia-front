@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import axios, { AxiosError } from "axios";
-import { SolutionTemplate } from "../types";
-import { useProblemStore } from "../stores/ProblemStore";
+import type { SolutionTemplate } from "../../types";
+import { useProblemStore } from "../../stores/ProblemStore";
 
 export function useSolveModel() {
   const formData = ref({

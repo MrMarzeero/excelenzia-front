@@ -5,7 +5,7 @@ import Modal from '../../../components/Modal.vue';
 
 import 'highlight.js/lib/common';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
-import { useSolveModel } from '../../../composables/useSolveModel';
+import { useSolveModel } from '../../composables/useSolveModel';
 import SkeletonPlaceholder from '../../../components/SkeletonPlaceholder.vue';
 
 export default {
