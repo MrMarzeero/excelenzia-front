@@ -1,11 +1,11 @@
 <template>
       <main class="home-problems-content">
         <div class="add-new-problem">
-          <h1>Nenhum Simulado ainda!</h1>
-          <p>1. Clique em "Novo Simulado"</p>
+          <h1>Nenhuma questão ainda!</h1>
+          <p>1. Clique em "Nova questão"</p>
           <p>2. Explore diversas opções de personalização</p>
           <p>3. Comece a resolver!</p>
-          <button class="criar-novo-simulado" @click="goToSimulado">Novo Simulado +</button>
+          <button class="criar-novo-simulado" @click="goToSimulado">Nova questão +</button>
         </div>
       </main>
   </template>
