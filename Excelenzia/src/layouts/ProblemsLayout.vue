@@ -65,8 +65,8 @@
 
 .wrapper {
   display: flex;
-  width: 90%; /* Ajuste de tamanho para não ocupar a tela toda */
-  height: 80vh; /* Ajusta a altura para deixar margens pequenas */
+  width: 94%; 
+  height: 80vh; 
   background-color: #0B2B52;
   margin: 1.3rem;
   border-radius: 1rem;

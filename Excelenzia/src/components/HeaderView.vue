@@ -41,6 +41,7 @@ header {
     justify-content: flex-start;
     width: 100%;
     padding-bottom: 0.5rem;
+    padding-left: 2rem;
 }
 
 .title {
