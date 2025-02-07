@@ -29,4 +29,8 @@ import HeaderView from './components/HeaderView.vue';
   font-style: normal;
 }
 
+main{
+  background-color: #02182A;
+}
+
 </style>

@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 88vh;
+    height: 89vh;
     background-color: #02182A; 
     color: #FFFFFF;
     text-align: center;

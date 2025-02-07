@@ -14,7 +14,7 @@ export default {
 <template>
   <h2>Número de testes</h2>
 
-  <input type="number" v-model.number="testCaseAmount" :min="1" :max="10" placeholder="1" />
+  <input class="testcase-style" type="number" v-model.number="testCaseAmount" :min="1" :max="10" placeholder="1" />
   <div class="btns">
     <button>Gerar casos</button>
     <button>baixar casos(.txt)</button>
@@ -38,22 +38,28 @@ export default {
 </template>
 
 <style scoped>
+
+.testcase-style{
+  background-color: #031836;
+  padding: 0.5rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: var(--blue-900);
+  background-color: #061F3C;
 }
 
 table th,
 table td {
   padding: 0.5rem;
   text-align: left;
-  border: 1px solid var(--blue-600);
+  border: 1px solid #02152b;
 }
 
 table th {
-  background-color: var(--primary);
+  background-color: #031836;
   color: #fff;
 }
 
@@ -80,11 +86,11 @@ table td pre {
   margin-top: .8rem;
 }
 .btns > button:nth-child(1) {
-  background-color: var(--primary);
+  background-color: #174D98;
 }
 .btns > button:nth-child(2) {
   background:none;
-  border: solid 2px var(--primary);
+  border: solid 2px #174D98;
 }
 
 .btns > button:hover {

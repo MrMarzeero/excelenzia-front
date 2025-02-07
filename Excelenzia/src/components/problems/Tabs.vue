@@ -15,6 +15,10 @@ export default {
 </template>
 
 <style scoped>
+* {
+  list-style: none;
+}
+
 .tabs > ul {
   display: flex;
   gap: 2rem;
@@ -24,13 +28,13 @@ export default {
   border-radius: 2rem;
   opacity: .8;
   transition: opacity .2s ease-in;
-  background-color: var(--blue-800);
+  background-color: #021C40;
 }
 .tabs > ul > li > a:hover {
   opacity: 1;
 }
 .tabs > ul > li > .router-link-exact-active {
   opacity: 1;
-  background-color: var(--primary);
+  background-color: #174D98;
 }
 </style>

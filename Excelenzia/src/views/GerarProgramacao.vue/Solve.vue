@@ -1,37 +1,37 @@
 <script lang="ts">
-import { ref } from 'vue';
-import DCSelect from '../../../components/input/DCSelect.vue';
-import Modal from '../../../components/Modal.vue';
-import 'highlight.js/lib/common';
-import hljsVuePlugin from "@highlightjs/vue-plugin";
-import { useSolveModel } from '../../composables/useSolveModel';
-import SkeletonPlaceholder from '../../../components/SkeletonPlaceholder.vue';
+  import { ref } from 'vue';
+  import Modal from '../../components/Modal.vue'
+  import 'highlight.js/lib/common';
+  import hljsVuePlugin from "@highlightjs/vue-plugin";
+  import { useSolveModel } from '../../composables/useSolveModel';
+  import SkeletonPlaceholder from '@/components/SkeletonPlaceholder.vue';
+  import DCSelect from '@/components/input/DCSelect.vue';
 
-export default {
-  name: 'Solve',
-  components: {DCSelect, Modal, highlightjs:hljsVuePlugin.component, SkeletonPlaceholder},
-  data() {
-    return {content: ''}
-  },
-  setup() {
-    const showAns = ref(false);
-    const { formData, loading, result, error, submitForm } = useSolveModel();
+  export default {
+    name: 'Solve',
+    components: {DCSelect, Modal, highlightjs:hljsVuePlugin.component, SkeletonPlaceholder},
+    data() {
+      return {content: ''}
+    },
+    setup() {
+      const showAns = ref(false);
+      const { formData, loading, result, error, submitForm } = useSolveModel();
 
-    const handleSubmit = async () => {
-      showAns.value = true;
-      await submitForm()
-    }
+      const handleSubmit = async () => {
+        showAns.value = true;
+        await submitForm()
+      }
 
-    return {
-      formData,
-      loading,
-      error,
-      result,
-      showAns,
-      handleSubmit
+      return {
+        formData,
+        loading,
+        error,
+        result,
+        showAns,
+        handleSubmit
+      }
     }
   }
-}
 </script>
 
 <template>
@@ -49,7 +49,7 @@ export default {
     <h2>Código de resolução</h2>
     <DCSelect v-model="formData.language" id="language" name="language" :options="[{label: 'C++', value: 'CPP'}, {label: 'Python', value: 'PY'}, {label: 'JavaScript', value: 'JS'}]" selected="CPP"/>
   </div>
-  <textarea v-model="content" id="editor"></textarea>
+  <textarea class="texarea-style" v-model="content" id="editor"></textarea>
   <div class="btns">
     <button>Submeter</button>
     <button :disabled="loading" @click="handleSubmit">Gerar resposta</button>
@@ -86,6 +86,11 @@ code:focus {
   justify-content: space-around;
 }
 
+.texarea-style{
+  background-color: #021C40;
+  padding: 0.5rem;
+}
+
 .btns > button {
   width: max-content;
   padding: .5rem 1rem;
@@ -96,11 +101,11 @@ code:focus {
   margin-top: .8rem;
 }
 .btns > button:nth-child(1) {
-  background-color: var(--primary);
+  background-color: #1A62C6;
 }
 .btns > button:nth-child(2) {
   background:none;
-  border: solid 2px var(--primary);
+  border: solid 2px #1A62C6;
 }
 
 .btns > button:hover {
