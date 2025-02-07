@@ -89,6 +89,7 @@ code:focus {
 .texarea-style{
   background-color: #021C40;
   padding: 0.5rem;
+  
 }
 
 .btns > button {

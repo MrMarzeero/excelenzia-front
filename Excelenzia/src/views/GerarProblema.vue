@@ -29,6 +29,7 @@
 
     const disableEditing = () => {
         editing.value = false
+        text.value = ""
     }
 </script>
 
@@ -46,7 +47,7 @@
                     <SelectionPanel class="selection-style" v-model="selectedTopics" :options="optionsSubject" />
         
                     <h2 class="title-option"> Tipo de Quiz </h2>
-                    <DCSelect :options="[{label: 'Discursivo', value: 'Discursive'}, {label: 'Múltipla escolha', value: 'Multiple choice'}]" selected="Discursive" />
+                    <DCSelect :options="[{label: 'Discursivo', value: 'Discursive'}, {label: 'Múltipla escolha', value: 'Multiple choice'}]" selected="Multiple choice" />
                     
                     <h2 class="title-option"> Número de Questões </h2>
                     <input class="questNum-style" type="number" v-model.number="questNumberAmount" :min="1" :max="10" placeholder="1" />

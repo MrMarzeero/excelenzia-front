@@ -42,6 +42,7 @@ export default {
 .testcase-style{
   background-color: #031836;
   padding: 0.5rem;
+  border: none;
 }
 
 table {

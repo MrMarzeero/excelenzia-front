@@ -21,17 +21,17 @@
                         </section>
             
                         <section class="dashboard-numbers container">
-                            <p class="info-text">0</p>
-                            <p class="info-text">0</p>
-                            <p class="info-text">0</p>
-                            <p class="info-text">0</p>
-                            <p class="info-text">0</p>
-                            <p class="info-text">0</p>
+                            <p class="info-text">13</p>
+                            <p class="info-text">4</p>
+                            <p class="info-text">10</p>
+                            <p class="info-text">8</p>
+                            <p class="info-text">9</p>
+                            <p class="info-text">13</p>
                         </section>
                 </div>
         
                 <div class="graphic-1 container">
-        
+                    <FrequencyTab></FrequencyTab>
                 </div>
             </div>
     
@@ -39,7 +39,7 @@
                 <div class="container-double-form">
                     <div class="form-1 container">
                         <h3 class="consistency-title">Sequência de consistência:</h3>
-                        <h1 class="consistency-num">0</h1>
+                        <h1 class="consistency-num">3</h1>
                     </div>
     
                     <div class="form-1 container">
@@ -50,7 +50,7 @@
                 </div>
     
                 <div class="form-2 container">
-
+                    <ConquistaMold></ConquistaMold>
                 </div>
             </aside>
         </div>
@@ -61,6 +61,8 @@
 <script setup>
     import { onMounted } from "vue";
     import Chart from "chart.js/auto";
+    import FrequencyTab from "@/components/FrequencyTab.vue";
+    import ConquistaMold from "@/components/ConquistaMold.vue";
 
     onMounted(() => {
     const ctx = document.getElementById("resolucao-grafico").getContext("2d");
@@ -150,9 +152,13 @@
     }
 
     .graphic-1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 53vw;
         height: 27.5vh;
         margin: 10px 0px 0px 20px;
+        
     }
 
     .container-double-form{
@@ -190,8 +196,5 @@
         margin-top: 10px;
         height: 30.4vh;
     }
-
-    
-
 
 </style>
