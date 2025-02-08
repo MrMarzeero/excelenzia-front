@@ -3,13 +3,13 @@
         <div>
             <h1 class="titulo">Escolha uma matéria</h1>
             <div class="buttons">
-                <button class="opcoes">
+                <button class="opcoes" @click="goToProg">
                     <h2>Programação</h2>
                 </button>
-                <button class="opcoes">
+                <button class="opcoes"@click="goToMateFis">
                     <h2>Matemática</h2>
                 </button>
-                <button class="opcoes">
+                <button class="opcoes" @click="goToMateFis">
                     <h2>Física</h2>
                 </button>
             </div>
@@ -17,12 +17,26 @@
     </main>
 </template>
 
+<script>
+export default {
+  methods: {
+    goToProg() {
+      this.$router.push('/problems/generate'); // Navega para o componente desejado
+    },
+    goToMateFis() {
+      this.$router.push('/gerar-problema'); // Navega para o componente desejado
+    },
+  },
+};
+
+</script>
+
 <style>
 .escolha-personalizado{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 88vh;
+    height: 84.8vh;
     background-color: #02182A; 
     color: #FFFFFF;
     text-align: center;
