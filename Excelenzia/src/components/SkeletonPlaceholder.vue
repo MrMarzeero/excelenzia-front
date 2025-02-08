@@ -43,8 +43,8 @@ export default {
 .placeholder {
   background-image: linear-gradient(
     to right,
-    var(--blue-800) 0%,
-    var(--primary) 10%,
+    red 0%,
+    blue 10%,
     var(--blue-800) 20%,
     var(--blue-800) 100%
   );

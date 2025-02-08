@@ -32,7 +32,7 @@ import Tabs from "../../components/problems/Tabs.vue";
     <textarea v-model="formData.context" name="context" id="context" placeholder="Descreva uma história para o problema..." maxlength="300"></textarea>
 
     <label for="selection">Tópicos</label>
-    <SelectionPanel id="selection" v-model="formData.topics"/>
+    <SelectionPanel id="selection" v-model="formData.topics" :options="['Array', 'String', 'Map', 'Dynamic Programming', 'Matemática', 'Ordenação', 'Guloso', 'DFS', 'Busca Binária', 'Árvore', 'BFS']"/>
     
     <label for="difficulty">Dificuldade</label>
     <DCSelect class="text-sm" v-model="formData.level" id="difficulty" name="difficulty" :options="[{label: 'Fácil', value: 'Easy'}, {label: 'Médio', value: 'Medium'}, {label: 'Difícil', value: 'Hard'}, {label: 'Insano', value:'Insane'}]" selected="Easy"></DCSelect>
@@ -62,7 +62,7 @@ import Tabs from "../../components/problems/Tabs.vue";
     outline: none;
     padding: .3rem;
     resize: none;
-    background-color: var(--blue-900);
+    background-color: #021C40;
     border-radius: .25rem;
   }
 
@@ -71,7 +71,7 @@ import Tabs from "../../components/problems/Tabs.vue";
     padding: .5rem 1rem;
     border: none;
     border-radius: .25rem;
-    background-color: var(--primary);
+    background-color: #174D98;
     cursor: pointer;
     transition: opacity .2s ease-in;
     margin-top: .8rem;

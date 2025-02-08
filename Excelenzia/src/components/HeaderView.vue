@@ -8,6 +8,8 @@
         <nav>
             <router-link class="nav-item dashboard-link" to="/">Dashboard</router-link>
             <router-link class="nav-item" to="/home-problemas">Geração de Problemas</router-link>
+            <router-link class="nav-item" to="/problems/generate">Teste</router-link>
+            <router-link class="nav-item" to="/gerar-problema">Teste 2</router-link>
         </nav>
     </header>
 </template>
@@ -40,6 +42,7 @@ header {
     justify-content: flex-start;
     width: 100%;
     padding-bottom: 0.5rem;
+    padding-left: 2rem;
 }
 
 .title {

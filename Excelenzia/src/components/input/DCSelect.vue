@@ -58,7 +58,7 @@ select {
   width: max-content;
   padding: .5rem 2rem .5rem .8rem;
   font-size: .8rem;
-  background-color: var(--blue-800);
+  background-color: #021C40;
   border-radius: 2rem;
   border: none;
   outline: none;

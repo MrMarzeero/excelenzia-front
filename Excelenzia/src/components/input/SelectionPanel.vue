@@ -1,11 +1,16 @@
 <script lang="ts">
 export default {
   name: 'SelectionPanel',
+  props: {
+    options: {
+      type: Array as () => string[], // Permite receber uma lista de strings
+      required: true, // Agora o componente precisa que as opções sejam passadas
+    }
+  },
   data() {
     return {
       dropdownVisible: false,
-      options: ['Array', 'String', 'Map', 'Dynamic Programming', 'Matemática', 'Ordernação', 'Guloso', 'DFS', 'Busca Binária', 'Árvore', 'BFS'],
-      selectedOptions: [] as string[],
+      selectedOptions: [] as string[], // Mantemos a lista de selecionados
     };
   },
   emits: ['update:modelValue'],
@@ -34,10 +39,10 @@ export default {
     }
   },
   mounted() {
-    document.addEventListener('click', this.handleClickOutside)
+    document.addEventListener('click', this.handleClickOutside);
   },
   beforeUnmount() {
-    document.removeEventListener('click', this.handleClickOutside)
+    document.removeEventListener('click', this.handleClickOutside);
   }
 };
 </script>
@@ -45,7 +50,7 @@ export default {
 <template>
   <div class="selection">
     <div class="btn" @click="toggleDropdown">
-      <span >Adicionar</span>
+      <span>Adicionar</span>
       <ion-icon name="add-outline"></ion-icon>
     </div>
     
@@ -66,8 +71,19 @@ export default {
   </div>
 </template>
 
-
 <style scoped>
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .selection {
   position: relative;
 }
@@ -79,21 +95,10 @@ export default {
   gap: .5rem;
   align-items: center;
   padding: .6rem 1rem;
-  background-color: var(--blue-800);
+  background-color: #021C40;
   border-radius: 2rem;
   cursor: pointer;
   font-size: .8rem;
-}
-
-.btn > button {
-  border: none;
-  background: none;
-  pointer-events: none
-}
-.btn > span {
-  color: white;
-  font-size: .75rem;
-  line-height: 1;
 }
 
 .dropdown {
@@ -103,10 +108,9 @@ export default {
   opacity: 0;
   padding: .5rem;
   pointer-events: none;
-  background-color: var(--blue-800);
+  background-color: #021C40;
   border-radius: .25rem;
-  transition: opacity .5s ease-in;
-  transition: top .3s ease;
+  transition: opacity .5s ease-in, top .3s ease;
   z-index: 2;
 }
 
@@ -124,52 +128,42 @@ export default {
   gap: .5rem;
 }
 
-
 .dropdown li {
   width: max-content;
   padding: .5rem;
   font-size: .8rem;
   line-height: 1;
-  background-color: var(--blue-900);
+  background-color: #02367e00;
   border-radius: 2rem;
-  border: solid 1px var(--primary);
+  border: solid 1px #0052c5;
   cursor: pointer;
 }
 
 .dropdown li.selected {
-  background-color: var(--primary);
-}
-
-.dropdown li:hover {
-  opacity: .9;
+  background-color: #003f97;
 }
 
 .selected-options {
   width: 100%;
-  height: max-content;
   display: flex;
   flex-wrap: wrap;
   gap: .5rem;
   padding: .5rem;
 }
+
 .selected-options > div {
   display: flex;
   align-items: center;
-  background-color: var(--primary);
+  background-color: #174D98;
   padding: .25rem .5rem .25rem 1rem;
   border-radius: 1rem;
   gap: .2rem;
 }
-.selected-options > div > p {
-  font-size: .75rem;
-  line-height: 1;
-}
 .selected-options >div > ion-icon {
   font-size: .9rem;
   cursor: pointer;
-  background-color: var(--blue-600);
-  opacity: 1;
+  background-color: #022f6e;
   border-radius: 2rem;
-  --ionicon-stroke-width: 3rem;
 }
 </style>
+

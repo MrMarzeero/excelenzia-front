@@ -1,5 +1,24 @@
 <script setup>
-    import { ref } from "vue"
+    import SelectionPanel from "@/components/input/SelectionPanel.vue"
+    import DCSelect from "@/components/input/DCSelect.vue"
+    import { ref, watch } from "vue"
+
+    const SelectedSubject = ref("Math")
+    const optionsSubject = ref([])
+    const selectedTopics = ref([])
+
+    const updateOptions = () => {
+        if (SelectedSubject.value === "Math") {
+            optionsSubject.value = ['Álgebra', 'Geometria Plana', 'Geometria Espacial', 'Trigonometria', 'Estatística', 'Probabilidade']
+        } else if (SelectedSubject.value === "Physics") {
+            optionsSubject.value = ['Cinemática', 'Dinâmica', 'Hidrostática', 'Óptica', 'Ondulatória', 'Eletromagnetismo', 'Gravitação']
+        }
+        selectedTopics.value = []
+    }
+
+    watch(SelectedSubject, updateOptions)
+
+    updateOptions()
 
     const editing = ref(false)
     const text = ref("")
@@ -10,6 +29,7 @@
 
     const disableEditing = () => {
         editing.value = false
+        text.value = ""
     }
 </script>
 
@@ -21,15 +41,20 @@
 
                 <div class="container-options">
                     <h2 class="title-option"> Matéria </h2>
-                    
+                    <DCSelect v-model="SelectedSubject" :options="[{label: 'Matematica', value: 'Math'}, {label: 'Física', value: 'Physics'}]" selected="Math" />
+
                     <h2 class="title-option"> Tópico </h2>
+                    <SelectionPanel class="selection-style" v-model="selectedTopics" :options="optionsSubject" />
         
                     <h2 class="title-option"> Tipo de Quiz </h2>
-        
-                    <h2 class="title-option"> Número de Questões </h2>
+                    <DCSelect :options="[{label: 'Discursivo', value: 'Discursive'}, {label: 'Múltipla escolha', value: 'Multiple choice'}]" selected="Multiple choice" />
                     
+                    <h2 class="title-option"> Número de Questões </h2>
+                    <input class="questNum-style" type="number" v-model.number="questNumberAmount" :min="1" :max="10" placeholder="1" />
+                    
+    
                 </div>
-
+                <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
             </div>
         </div>
 
@@ -51,6 +76,7 @@
     .gen-problem-content{
         display: flex;
         justify-content: center;
+        gap: 2rem;
         flex-direction: row;
         background-color: #02182A;
         color: whitesmoke;
@@ -73,20 +99,26 @@
 
     
     .tab{
-        width: 47vw;
+        width: 43vw;
         height: 80vh;
         border-radius: 1rem;
         margin: 0.5rem 0.6rem;
     }
     
     .container-options{
-        padding: 2rem ;
+        padding: 0.2rem 2rem ;
     }
     
     .title-option{
-        font-weight: 500;
+        font-weight: 600;
         font-size: 1.2rem;
-        margin-bottom: 1.5rem;
+        padding-left: 0.4rem;
+        margin-bottom: 0.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .selection-style{
+        padding: 0 3rem 0 0;
     }
 
     .description-tab{
@@ -94,6 +126,15 @@
         height: 80vh;
         border-radius: 1rem;
         margin: 8px 15px;
+    }
+
+    .questNum-style{
+        background-color: #021C40;
+        text-align: center;
+        padding: 0.5rem 0.2rem;
+        margin-left: 0.4rem;
+        border-radius: 0.8rem;
+        border: none;
     }
 
     .btn{
@@ -113,6 +154,23 @@
         border: 1px solid #1a6ee2;
         transition: 0.5s;
         color: white;
+    }
+
+    .submitButton{
+        width: max-content;
+        padding: .5rem 1rem;
+        margin: 1.4rem 2.3rem;
+        border: none;
+        border-radius: .25rem;
+        background-color: #174D98;
+        cursor: pointer;
+        transition: opacity .2s ease-in;
+        margin-top: .8rem;
+    }
+
+    .submitButton:hover{
+        background-color: #0f3872;
+        transition: 0.2s;
     }
 
     .text-area-container{

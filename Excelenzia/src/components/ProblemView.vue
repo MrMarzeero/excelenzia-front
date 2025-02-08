@@ -1,35 +1,35 @@
 <script lang="ts">
-import { computed } from 'vue';
-import { useProblemStore } from '../../stores/ProblemStore';
-import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
-import katex from 'katex';
+  import { computed } from 'vue';
+  import { useProblemStore } from '../../stores/ProblemStore';
+  import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
+  import katex from 'katex';
 
-function renderLatex(content: string): string {
-  return content.replace(/\$(.+?)\$/g, (match, p1) => {
-    try {
-      return katex.renderToString(p1, { throwOnError: false });
-    } catch {
-      return match;
-    }
-  });
-}
-
-export default {
-  name: 'ProblemView',
-  components: {SkeletonPlaceholder},
-  setup() {
-    const problemStore = useProblemStore();
-    const result = computed(() => problemStore.result);
-    const loading = computed(() => problemStore.loading);
-
-    const renderedName = computed(() => renderLatex(result.value?.name || ''));
-    const renderedStatement = computed(() => renderLatex(result.value?.statement || ''))
-    const renderedInput = computed(() => renderLatex(result.value?.input || ''))
-    const renderedOutput = computed(() => renderLatex(result.value?.output || ''))
-
-    return {result, loading, renderedName, renderedStatement, renderedInput, renderedOutput};
+  function renderLatex(content: string): string {
+    return content.replace(/\$(.+?)\$/g, (match, p1) => {
+      try {
+        return katex.renderToString(p1, { throwOnError: false });
+      } catch {
+        return match;
+      }
+    });
   }
-}
+
+  export default {
+    name: 'ProblemView',
+    components: {SkeletonPlaceholder},
+    setup() {
+      const problemStore = useProblemStore();
+      const result = computed(() => problemStore.result);
+      const loading = computed(() => problemStore.loading);
+
+      const renderedName = computed(() => renderLatex(result.value?.name || ''));
+      const renderedStatement = computed(() => renderLatex(result.value?.statement || ''))
+      const renderedInput = computed(() => renderLatex(result.value?.input || ''))
+      const renderedOutput = computed(() => renderLatex(result.value?.output || ''))
+
+      return {result, loading, renderedName, renderedStatement, renderedInput, renderedOutput};
+    }
+  }
 </script>
 
 <template>
@@ -116,7 +116,7 @@ export default {
 .sample-testcase td {
   padding: 0.5rem;
   text-align: left;
-  border: 1px solid var(--blue-600);
+  border: 1px solid red;
 }
 
 .sample-testcase th {
