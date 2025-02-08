@@ -28,3 +28,11 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Ignorar arquivos executáveis bun
+node_modules/
+node_modules/bun/bin/bun.exe
+node_modules/@oven/bun-windows-x64-baseline/bin/bun.exe
+
+
+
