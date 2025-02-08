@@ -30,6 +30,11 @@ const router = createRouter({
       component: GerarProblema,
     },
     {
+      path:'/biblioteca-problemas',
+      name: 'biblioteca-problemas',
+      component: () => import('../views/BibliotecaProblemas.vue')
+    },
+    {
       path: "/problems",
       component: ProblemsLayout,
       children: [
