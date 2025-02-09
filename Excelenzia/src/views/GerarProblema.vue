@@ -52,11 +52,11 @@
                     <DCSelect :options="[{label: 'Discursivo', value: 'Discursive'}, {label: 'Múltipla escolha', value: 'Multiple choice'}]" selected="Multiple choice" />
                     
                     <h2 class="title-option"> Número de Questões </h2>
-                    <input class="questNum-style" type="number" v-model.number="questNumberAmount" :min="1" :max="10" placeholder="1" />
+                    <input class="questNum-style" type="number" v-model="questNumberAmount" :min="1" :max="10" placeholder="1" />
                     
     
                 </div>
-                <RouterLink to="/quiz-view">
+                <RouterLink to="/quiz">
                     <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
                 </RouterLink>
             </div>

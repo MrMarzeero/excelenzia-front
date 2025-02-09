@@ -10,7 +10,7 @@ const problems = [
   },
   {
     name: "Área do Triângulo",
-    statement: "Qual é a fórmula para calcular a área de um triângulo?",
+    statement: "Qual é a fórmula para calcular a área de um triângulo? ",
     options: ["A = b * h", "A = (b * h) / 2", "A = b + h"], // Exemplo de múltipla escolha
     answer: "A = (b * h) / 2"
   }
