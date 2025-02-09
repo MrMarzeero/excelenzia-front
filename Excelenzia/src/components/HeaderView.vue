@@ -8,8 +8,6 @@
         <nav>
             <router-link class="nav-item dashboard-link" to="/">Dashboard</router-link>
             <router-link class="nav-item" to="/biblioteca-problemas">Geração de Problemas</router-link>  
-            <router-link class="nav-item" to="/problems/generate">Teste</router-link>
-            <router-link class="nav-item" to="/gerar-problema">Teste 2</router-link>
                  
         </nav>
     </header>

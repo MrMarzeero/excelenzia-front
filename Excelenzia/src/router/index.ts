@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Dashboard from '../views/Dashboard.vue'
-import HomeProblemas from '../views/HomeProblemas.vue'
-import EscolhadePersonalizado from '../views/EscolhadePersonalizado.vue'
+import HomeProblemas from '../views/Home de Problemas/HomeProblemas.vue'
+import EscolhadePersonalizado from '../views/Home de Problemas/EscolhadePersonalizado.vue'
 import GerarProblema from '@/views/GerarProblema.vue'
 import ProblemsLayout from '@/layouts/ProblemsLayout.vue'
+import QuizGenerator from '@/components/QuizGenerator.vue'
+import QuizView from '@/views/QuizView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,9 +32,19 @@ const router = createRouter({
       component: GerarProblema,
     },
     {
+      path: '/quiz',
+      name: 'quizgenerator',
+      component: QuizGenerator,
+    },
+    {
+      path : '/quiz-view',
+      name: 'quiz-view',
+      component: QuizView,
+    },
+    {
       path:'/biblioteca-problemas',
       name: 'biblioteca-problemas',
-      component: () => import('../views/BibliotecaProblemas.vue')
+      component: () => import('../views/Home de Problemas/BibliotecaProblemas.vue')
     },
     {
       path: "/problems",

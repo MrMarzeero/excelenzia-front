@@ -3,14 +3,14 @@ export default {
   name: 'SelectionPanel',
   props: {
     options: {
-      type: Array as () => string[], // Permite receber uma lista de strings
-      required: true, // Agora o componente precisa que as opções sejam passadas
+      type: Array as () => string[], 
+      required: true, 
     }
   },
   data() {
     return {
       dropdownVisible: false,
-      selectedOptions: [] as string[], // Mantemos a lista de selecionados
+      selectedOptions: [] as string[], 
     };
   },
   emits: ['update:modelValue'],

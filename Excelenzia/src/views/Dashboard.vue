@@ -61,8 +61,8 @@
 <script setup>
     import { onMounted } from "vue";
     import Chart from "chart.js/auto";
-    import FrequencyTab from "@/components/FrequencyTab.vue";
-    import ConquistaMold from "@/components/ConquistaMold.vue";
+    import FrequencyTab from "@/components/Dashboard Elements/FrequencyTab.vue";
+    import ConquistaMold from "@/components/Dashboard Elements/ConquistaMold.vue";
 
     onMounted(() => {
     const ctx = document.getElementById("resolucao-grafico").getContext("2d");

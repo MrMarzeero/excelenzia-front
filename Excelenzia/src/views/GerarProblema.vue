@@ -2,6 +2,7 @@
     import SelectionPanel from "@/components/input/SelectionPanel.vue"
     import DCSelect from "@/components/input/DCSelect.vue"
     import { ref, watch } from "vue"
+    import { RouterLink } from "vue-router"
 
     const SelectedSubject = ref("Math")
     const optionsSubject = ref([])
@@ -15,6 +16,7 @@
         }
         selectedTopics.value = []
     }
+
 
     watch(SelectedSubject, updateOptions)
 
@@ -54,7 +56,9 @@
                     
     
                 </div>
-                <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
+                <RouterLink to="/quiz-view">
+                    <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
+                </RouterLink>
             </div>
         </div>
 
