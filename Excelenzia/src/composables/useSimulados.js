@@ -35,17 +35,20 @@ export function useSimulados() {
     {
       id: "1",
       name: "Desafios de Álgebra",
-      topics: ["matemática", "equações", "álgebra"]
+      topics: ["matemática", "equações", "álgebra"],
+      questions:"15"
     },
     {
       id: "2",
       name: "Problemas de Física Clássica",
-      topics: ["física", "cinemática", "dinâmica"]
+      topics: ["física", "cinemática", "dinâmica"],
+      questions:"12"
     },
     {
       id: "3",
       name: "Lógica de Programação Avançada",
-      topics: ["programação", "algoritmos", "recursão"]
+      topics: ["programação", "algoritmos", "recursão"],
+      questions:"10"
     }
   ];
 
