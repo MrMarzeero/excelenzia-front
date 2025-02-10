@@ -1,31 +1,42 @@
 <template>
   <div class="problems-container">
     <h1>Lista de Problemas</h1>
-
     <div v-if="loading">Carregando problemas...</div>
     <div v-if="error">{{ error }}</div>
-
-    <div v-if="questions.length > 0">
-      <ProblemCard v-for="(question, index) in questions" :key="index" :problem="question" />
+    <div v-if="questions && questions.length > 0">
+      <ProblemCard v-for="(question, index) in questions" :key="question.id" :problem="question" />
     </div>
-    <p v-else-if="!loading && !error">Nenhum problema disponível.</p>
+    <p v-else-if="!loading && !error && generated">Nenhum problema disponível.</p>
   </div>
 </template>
 
 <script setup>
 import ProblemCard from "@/components/ProblemCard.vue";
 import { useGenerateProblem } from "@/composables/Quiz Generator/useQuizGenerate";
-import { onMounted } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const { questions, loading, error, generateProblems } = useGenerateProblem();
+const generated = ref(false);
 
 onMounted(async () => {
-  // Verifica se já existem questões no store, se não gera novas.
-  if (questions.value.length === 0) {
+  loading.value = true;
+
+  try {
     await generateProblems();
+    generated.value = true;
+  } catch (generateError) {
+    error.value = generateError.message;
+    console.error("Error in problem generation:", generateError);
+  } finally {
+    loading.value = false;
   }
 });
+
+watch(questions, () => {
+  console.log("Questions updated:", questions.value);
+});
 </script>
+
 
 <style scoped>
 .problems-container {

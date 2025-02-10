@@ -31,11 +31,11 @@ export function useGenerateProblem() {
 
       const requestData = {
         subject: choiceStore.subject,
-        topics: Array.isArray(choiceStore.topics)? choiceStore.topics: [], // Linha corrigida
+        topics: Array.isArray(choiceStore.topics) ? choiceStore.topics : [],
         quizType: choiceStore.quizType,
         questionsAmount: choiceStore.questionsAmount,
         description: choiceStore.description,
-    };
+      };
 
       const response = await post("/quiz/generate/", requestData, {
         headers: {
@@ -43,31 +43,42 @@ export function useGenerateProblem() {
         },
       });
 
+      console.log("Resposta do /quiz/generate:", response);
+
       if (response.data && response.data.id) {
         quiz.value = response.data;
-
         const quizId = quiz.value?.id;
 
         if (quizId) {
-          await fetchQuiz(quizId);
+          try {
+            const fetchedData = await fetchQuiz(quizId);
+            if (fetchedData && fetchedData.quiz && fetchedData.questions && fetchedData.questions.length > 0) {
+              quiz.value = fetchedData.quiz;
+              questions.value = fetchedData.questions;
+              console.log("Quiz and questions fetched:", fetchedData);
+            } else {
+              console.error("Dados incompletos:", fetchedData);
+              error.value = "Dados do quiz ou questões incompletos.";
+            }
+          } catch (fetchError) {
+            console.error("Erro ao buscar questões:", fetchError);
+            error.value = "Erro ao buscar questões.";
+          }
         } else {
-          console.error("ID do quiz não encontrado na resposta da API:", response.data);
+          console.error("ID do quiz não encontrado:", response.data);
           error.value = "Erro ao obter ID do quiz.";
         }
-
       } else {
         console.error("Resposta da API inválida:", response.data);
-        error.value = "A resposta da API não contém um quiz válido.";
+        error.value = "A resposta da API está incompleta.";
       }
-
-    } catch (err: any) { // Tipagem do erro
+    } catch (err: any) {
       error.value = "Erro ao gerar problemas: " + err.message;
       console.error("Erro na geração de problemas:", err);
 
-      // Opcional: tratamento de erro mais específico
       if (err.response) {
         console.error("Detalhes do erro na resposta:", err.response.data, err.response.status);
-        error.value += ` (Status: ${err.response.status})`; // Adiciona o status do erro à mensagem
+        error.value = `Erro ao gerar problemas: ${err.response.data?.error || err.message} (Status: ${err.response.status})`;
       } else if (err.request) {
         console.error("Erro na requisição:", err.request);
         error.value += " (Erro na requisição)";
