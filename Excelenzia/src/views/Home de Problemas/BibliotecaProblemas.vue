@@ -46,7 +46,7 @@
         <div class="simulado-info">
           <strong class="titulo">{{ simulado.name }}</strong>
           <p class="descricao">{{ simulado.questions }} Questões</p>
-          <p class="topicos">{{ simulado.topics.join(" • ") }}</p>
+          <p class="topicos">{{ simulado.topics?.join(" • ") || "Sem tópicos" }}</p>
         </div>
         <button class="botao-resolver">Resolver ▶</button>
       </li>

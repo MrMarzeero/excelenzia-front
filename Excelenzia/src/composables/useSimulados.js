@@ -52,17 +52,12 @@ export function useSimulados() {
     }
   ];
 
-  const carregarSimulados = async () => {
-    try {
-      const response = await get("/all");
-      simulados.value = response.data.length ? response.data : dadosMockados;
-    } catch (error) {
-      console.error("Erro ao buscar simulados:", error);
-      simulados.value = dadosMockados; // Usa mock caso a API falhe
-    } finally {
-      carregando.value = false;
-    }
+  const carregarSimulados = () => {
+    simulados.value = dadosMockados; // Apenas adiciona os dados mockados
+    carregando.value = false; // Marca como carregado
   };
+  
+  
 
   onMounted(carregarSimulados);
 
