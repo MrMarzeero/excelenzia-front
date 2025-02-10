@@ -51,7 +51,7 @@ export default {
   position: relative;
   width:fit-content;
   height: fit-content;
-  background-color: var(--blue-600);
+  background-color: #303057;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
@@ -65,7 +65,7 @@ export default {
   padding: .15rem;
   top: 1rem;
   right: 1rem;
-  background-color: var(--grey-400);
+  background-color: #6B6B6B;
   border-radius: 50%;
   border:none;
   cursor: pointer;

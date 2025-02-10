@@ -11,7 +11,6 @@ import HeaderView from './components/HeaderView.vue';
     <main>
       <router-view></router-view> 
     </main>
-
   </div>
 </template>
 

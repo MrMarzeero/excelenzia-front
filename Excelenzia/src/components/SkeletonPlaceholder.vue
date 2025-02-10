@@ -43,10 +43,10 @@ export default {
 .placeholder {
   background-image: linear-gradient(
     to right,
-    red 0%,
-    blue 10%,
-    var(--blue-800) 20%,
-    var(--blue-800) 100%
+    #1E1E39 0%,
+    #4444EC 10%,
+    #1E1E39 20%,
+    #1E1E39 100%
   );
   background-size: 200% 100%;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);

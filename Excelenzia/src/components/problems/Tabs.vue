@@ -9,7 +9,6 @@ export default {
   <ul>
     <li><RouterLink to="/problems/generate">Descrição</RouterLink></li>
     <li><RouterLink to="/problems/solve">Resolver</RouterLink></li>
-    <li><RouterLink to="/problems/testcases">Testes</RouterLink></li>
   </ul>
 </div>
 </template>

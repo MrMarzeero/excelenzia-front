@@ -6,6 +6,7 @@ export interface User {
 }
 
 export interface ProblemTemplate {
+  id: string;
   name: string;
   statement: string;
   input: string;

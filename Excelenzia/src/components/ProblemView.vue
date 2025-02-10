@@ -109,18 +109,18 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: var(--blue-900);
+  background-color: #02182A;
 }
 
 .sample-testcase th,
 .sample-testcase td {
   padding: 0.5rem;
   text-align: left;
-  border: 1px solid red;
+  border: 1px solid #02182A;
 }
 
 .sample-testcase th {
-  background-color: var(--primary);
+  background-color: #5139d8;
   color: #fff;
 }
 

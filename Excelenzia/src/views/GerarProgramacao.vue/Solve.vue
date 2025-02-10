@@ -37,13 +37,15 @@
 <template>
   <Modal v-model="showAns">
     <div class="placeholder" v-if="!result && loading">
-      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
-      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/> 
-      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
-      <SkeletonPlaceholder width="20rem" height="1rem" border-radius="2rem"/>
+      <SkeletonPlaceholder width="40rem" height="1rem" border-radius="2rem"/>
+      <SkeletonPlaceholder width="40rem" height="1rem" border-radius="2rem"/> 
+      <SkeletonPlaceholder width="40rem" height="1rem" border-radius="2rem"/>
+      <SkeletonPlaceholder width="40rem" height="1rem" border-radius="2rem"/>
     </div>
 
-<highlightjs v-else autodetect :code="result?.solution ?? ''" />
+    <div v-else class="highlight-container">
+      <highlightjs autodetect :code="result?.solution ?? ''" />
+    </div>
   </Modal>
   <div class="header">
     <h2>Código de resolução</h2>
@@ -57,6 +59,15 @@
 </template>
 
 <style scoped>
+
+.highlight-container {
+  max-height: 90vh;
+  width: 70vw;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
 .placeholder {
   width: 100%;
   display: flex;

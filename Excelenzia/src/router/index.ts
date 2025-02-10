@@ -52,7 +52,6 @@ const router = createRouter({
       children: [
         { path: "generate", component: () => import("../views/GerarProgramacao.vue/Generate.vue") },
         { path: "solve", component: () => import("../views/GerarProgramacao.vue/Solve.vue") },
-        { path: "testcases", component: () => import("../views/GerarProgramacao.vue/Testcases.vue") },
       ],
     }
     

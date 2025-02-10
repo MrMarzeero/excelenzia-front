@@ -2,6 +2,8 @@ import { ref } from "vue";
 import axios, { AxiosError } from "axios";
 import type { ProblemTemplate } from "../../types";
 import { useProblemStore } from "../../stores/ProblemStore.ts";
+import { useAxios } from "./useAxios";
+import { getOrGenerateToken } from "./auth.js";
 
 export function useGenerateModel() {
   const formData = ref({
@@ -11,6 +13,7 @@ export function useGenerateModel() {
     language: 'Portuguese',
   });
 
+  const { post } = useAxios();
   const loading = ref(false);
   const error = ref<AxiosError | null>(null);
   const result = ref<ProblemTemplate | null>(null);
@@ -22,27 +25,30 @@ export function useGenerateModel() {
     error.value = null;
 
     try {
-      const response = await axios.post(
-        "https://dreamcode-api.adaptable.app/problem",
-        {
-          language: formData.value.language,
-          context: formData.value.context,
-          topics: formData.value.topics,
-          level: formData.value.level,
-        },
+      const token = getOrGenerateToken();
+      const requestData = {
+        language: formData.value.language,
+        context: formData.value.context,
+        topics: formData.value.topics,
+        level: formData.value.level,
+      }
+      const response = await post(
+        "/cp/problem/", requestData,
         {
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      result.value = response.data.body.data;
+      result.value = response.data;
       problemStore.setLoadingState(false);
       if (result.value) problemStore.setResult(result.value);
     } catch (err: any) {
+      console.error(err);
       error.value = err.response?.data?.message || "An error occured.";
     } finally {
       loading.value = false;
+      problemStore.setLoadingState(false);
     }
   };
 
