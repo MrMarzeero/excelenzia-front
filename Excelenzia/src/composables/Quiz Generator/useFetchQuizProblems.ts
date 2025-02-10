@@ -33,7 +33,7 @@ export function useFetchQuiz() {
     error.value = null;
 
     try {
-      const response = await get(`/quiz/${quizId}`); // URL corrigida
+      const response = await get(`/quiz/${quizId}`);
 
       if (response.data && response.data.quiz && Array.isArray(response.data.questions)) {
         quiz.value = response.data.quiz;

@@ -2,7 +2,7 @@
     import { useGenerateProblem } from "@/composables/Quiz Generator/useQuizGenerate";
 
     const { quiz, questions, loading, error, generateProblems } = useGenerateProblem();
-    console.log("Token carregado:", import.meta.env.VITE_AUTH_TOKEN);
+    console.log("Token carregado");
 </script>
 
 <template>

@@ -41,11 +41,10 @@ export function useGenerateProblem() {
 
       if (response.data && response.data.quiz && response.data.quiz.id) {
         quiz.value = response.data.quiz;
-        if (quiz.value) { // Verifique se quiz.value não é null após a atribuição
+        if (quiz.value) { 
           await fetchQuiz(quiz.value.id);
         } else {
           console.error("quiz.value ainda é null após a atribuição!");
-          // Lide com o erro, talvez definindo uma mensagem de erro para o usuário.
           error.value = "Erro ao processar resposta da API.";
         }
       } else {
