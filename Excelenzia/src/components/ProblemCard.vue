@@ -1,9 +1,8 @@
 <template>
   <div class="problem-card">
-    <h2 class="problem-name">{{ problem.name }}</h2>
-    <p class="problem-statement">{{ problem.statement }}</p>
+    <h2 class="problem-name">{{ problem?.name }}</h2> <p class="problem-statement">{{ problem?.statement }}</p>
 
-    <div v-if="problem.options && problem.options.length > 0" class="options-container">
+    <div v-if="problem?.options && problem?.options?.length > 0" class="options-container">
       <ul>
         <li v-for="(option, index) in problem.options" :key="index" class="option">
           {{ option }}
@@ -25,20 +24,19 @@ import { ref, computed } from "vue";
 const props = defineProps({
   problem: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const showAnswer = ref(false);
 
 const formattedAnswer = computed(() => {
-  if (Array.isArray(props.problem.answer)) {
-    return props.problem.answer.join(', ');
+  if (Array.isArray(props.problem?.answer)) {
+    return props.problem.answer.join(", ");
   } else {
-    return props.problem.answer;
+    return props.problem?.answer;
   }
 });
-
 </script>
   
   <style scoped>

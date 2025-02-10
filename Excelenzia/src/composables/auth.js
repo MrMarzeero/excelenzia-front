@@ -1,25 +1,30 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/user/login"; // URL corrigida
+const API_URL = "http://localhost:3000";
 
 async function logIn(userData) {
   try {
-    const response = await axios.post(API_URL, userData);
+    const response = await axios.post(`${API_URL}/user/login`, userData);
 
-    console.log("Resposta da API:", response.data);
+    // Acesso corrigido às propriedades
+    if (response.data && response.data.body && response.data.body.data && response.data.body.data.data && response.data.body.data.data.token && response.data.body.data.data.user && response.data.body.data.data.user.id && response.data.body.data.data.user.username && response.data.body.data.data.user.email) {
+      const token = response.data.body.data.data.token;
+      const userId = response.data.body.data.data.user.id;
+      const username = response.data.body.data.data.user.username;
+      const email = response.data.body.data.data.user.email;
 
-    const token = response.data.body.data.data.token; // Acesso simplificado ao token
-    const userId = response.data.body.data.data.user.id; // Acesso simplificado ao userId
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
 
-    if (!token || !userId) {
-      throw new Error("Token ou ID não encontrados na resposta da API.");
+      return { token, userId, username, email };
+    } else {
+      console.error("Estrutura da resposta da API inesperada:", response.data);
+      throw new Error("Resposta da API inválida.");
     }
-
-    localStorage.setItem("token", token);
-    console.log("Token armazenado no localStorage:", localStorage.getItem("token"));
-    return { token, userId };
   } catch (error) {
-    console.error("Erro ao logar usuário:", error.message, error.response?.status); // Informações extras sobre o erro
+    console.error("Erro ao logar usuário:", error);
     throw error;
   }
 }
@@ -29,54 +34,55 @@ async function checkIfUserExists(email) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      console.error("Token não encontrado. Faça login primeiro.");
       return false;
     }
 
-    const response = await axios.get(`http://localhost:3000/user/${email}`, { // URL e método corrigidos
+    const response = await axios.get(`${API_URL}/user/${email}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    return response.data.email === email; // Ajuste conforme a estrutura da sua API
+    return response.data.email === email;
   } catch (error) {
-    console.error("Erro ao verificar existência do usuário:", error.message, error.response?.status);
+    console.error("Erro ao verificar existência do usuário:", error);
     return false;
   }
 }
 
-// Função para obter o token ou fazer login
 async function getOrGenerateToken(userData) {
-  const token = localStorage.getItem("token");  // Tenta pegar o token do localStorage
+  const token = localStorage.getItem("token");
 
   if (token) {
-    console.log("Token encontrado no localStorage:", token);
-    return token;  // Se o token estiver armazenado, retorna ele
+    return {
+      token,
+      userId: localStorage.getItem("userId"),
+      username: localStorage.getItem("username"),
+      email: localStorage.getItem("email"),
+    };
   }
 
-  // Se não encontrar o token, faz o login com o usuário
-  console.log("Fazendo login...");
-  return await logIn(userData);  // Retorna o token do login realizado
+  return await logIn(userData);
 }
 
 export { logIn, checkIfUserExists, getOrGenerateToken };
 
-// Usando os dados fornecidos para login:
+// Exemplo de uso
 const userData = {
-  email: "email@example.net",  // ou username: "UserExample"
-  password: "ExempleUser123"
+  email: "email@example.net",
+  password: "ExempleUser123",
 };
 
-getOrGenerateToken(userData).then(({ token, userId, username, email }) => {
-  console.log("Token obtido:", token);  // O token gerado será retornado aqui
-  console.log("ID do usuário:", userId);
-  console.log("Nome de usuário:", username);
-  console.log("Email do usuário:", email);
-  getProtectedResource();  // Usando o token para acessar um recurso protegido
-}).catch(error => {
-  console.error("Erro ao obter token:", error);
-});
+getOrGenerateToken(userData)
+  .then(({ token, userId, username, email }) => {
+    console.log("Token obtido:", token);
+    console.log("ID do usuário:", userId);
+    console.log("Nome de usuário:", username);
+    console.log("Email do usuário:", email);
+  })
+  .catch((error) => {
+    console.error("Erro ao obter token:", error);
+  });
 
 
 
