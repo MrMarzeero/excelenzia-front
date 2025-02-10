@@ -1,3 +1,4 @@
+import router from "@/router";
 import axios from "axios";
 
 const API_URL = "http://localhost:3000";
@@ -84,6 +85,9 @@ export function useAxios() {
       const response = await axiosInstance[method](url, data, config);
       return response.data;
     } catch (error) {
+      if (error.status === 403) {
+        router.push("/login");
+      }
       console.error("Erro na requisição:", error);
 
       if (error.response) {

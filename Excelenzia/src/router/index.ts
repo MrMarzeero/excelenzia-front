@@ -7,6 +7,7 @@ import GerarProblema from '@/views/GerarProblema.vue'
 import ProblemsLayout from '@/layouts/ProblemsLayout.vue'
 import QuizGenerator from '@/components/QuizGenerator.vue'
 import QuizView from '@/views/QuizView.vue'
+import { useUserStore } from '../../stores/userStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +53,11 @@ const router = createRouter({
       component: () => import('../views/login/Signup.vue')
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login/Login.vue')
+    },
+    {
       path: "/problems",
       component: ProblemsLayout,
       children: [
@@ -61,6 +67,15 @@ const router = createRouter({
     }
     
   ],
+})
+
+router.beforeEach((to, _from, next) => {
+  console.log(localStorage.getItem("token"));
+  if ((to.path !== "/signup" && to.path !== "/login") && !localStorage.getItem("token")) {
+    next("/signup");
+  } else {
+    next();
+  }
 })
 
 export default router

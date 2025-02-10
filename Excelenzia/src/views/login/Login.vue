@@ -1,7 +1,5 @@
 <script lang="ts">
-import router from '@/router';
 import { useUserStore } from '../../../stores/userStore';
-import { createUser} from '../../composables/auth'
 
 export default {
   name: 'SignUp',
@@ -13,18 +11,8 @@ export default {
     }
   },
   methods:{
-    async handleSignUp() {
-      const userStore = useUserStore();
-      if (!this.username || !this.email || !this.password) return;
-      console.log(this.username, this.email, this.password);
-      try {
-        const user = await createUser(this.username, this.email, this.password);
-        console.log(user);
-        userStore.login({ username: this.username, email: this.email }, user.token);
-        router.push('/')
-      } catch(err) {
-        console.error(err);
-      }
+    handleSignUp() {
+      
     }
   }
 }
@@ -33,12 +21,12 @@ export default {
 <template>
   <div class="center-wrapper">
     <div class="sign-up-form">
-      <h1>Sign Up</h1>
+      <h1>Log in</h1>
       <form @submit.prevent="handleSignUp">
         <input v-model="username" type="text" placeholder="Username" required />
         <input v-model="email" type="email" placeholder="Email" required />
         <input v-model="password" type="password" placeholder="Password" required />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   </div>
@@ -46,7 +34,7 @@ export default {
 
 <style>
 .center-wrapper {
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 4rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,8 +47,8 @@ export default {
   flex-direction: column;
   border-radius: 5rem;
   background-color: #06253E;
+  color : white;
   gap: 2rem;
-  color: white;
 }
 
 form {
@@ -73,14 +61,13 @@ form > button {
   width: max-content;
   padding: .5rem;
   border: none;
-  background-color: #726bdc;
-  border-radius: 2rem;
+  background-color: #4444EC;
 }
 form > input {
   all: unset;
   border: none;
   padding: .5rem;
-  background-color: #181717;
+  background-color: #313131;
   border-radius: 2rem;
   color: white;
 }

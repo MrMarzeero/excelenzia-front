@@ -3,7 +3,7 @@ import { ref } from "vue";
 import type { Ref } from "vue";
 import { useChoiceStore } from "../../../stores/ChoicesProblemStore";
 import { useFetchQuiz } from "./useFetchQuizProblems";
-import { getOrGenerateToken } from "../auth";
+import { getToken} from "../../composables/auth";
 
 type Quiz = {
   id: string;
@@ -27,8 +27,7 @@ export function useGenerateProblem() {
     error.value = null;
 
     try {
-      const token = await getOrGenerateToken();
-
+      const token = getToken();
       const requestData = {
         subject: choiceStore.subject,
         topics: Array.isArray(choiceStore.topics) ? choiceStore.topics : [],

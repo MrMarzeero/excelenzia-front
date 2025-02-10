@@ -5,22 +5,19 @@ import type { User } from "../types";
 export const useUserStore = defineStore("User", {
   state: () => ({
     isLogged: false,
-    token: null as string | null,
     user: null as User | null,
   }),
   getters: {
     isAuthenticated: (state) => !!state.user,
   },
   actions: {
-    login(user: User) {
+    login(user: User, token: string) {
       this.user = user;
-    },
-    get_token() {
-      return this.token;
+      this.isLogged = true;
     },
     logout() {
       this.user = null;
-      localStorage.removeItem("userToken");
+      this.isLogged = false;
     },
   },
 });

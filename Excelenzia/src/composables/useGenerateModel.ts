@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 import type { ProblemTemplate } from "../../types";
 import { useProblemStore } from "../../stores/ProblemStore.ts";
 import { useAxios } from "./useAxios";
-import { getOrGenerateToken } from "./auth.js";
+import { getToken } from "../composables/auth";
 
 export function useGenerateModel() {
   const formData = ref({
@@ -25,7 +25,7 @@ export function useGenerateModel() {
     error.value = null;
 
     try {
-      const token = getOrGenerateToken();
+      const token = getToken();
       const requestData = {
         language: formData.value.language,
         context: formData.value.context,
@@ -41,6 +41,7 @@ export function useGenerateModel() {
         }
       );
       result.value = response.data;
+      console.log(response.data);
       problemStore.setLoadingState(false);
       if (result.value) problemStore.setResult(result.value);
     } catch (err: any) {

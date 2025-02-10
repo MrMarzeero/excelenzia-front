@@ -1,29 +1,29 @@
 import axios from "axios";
 import { useAxios } from "./useAxios";
-import type { User } from "../../types";
-import { useUserStore } from "../../stores/userStore";
+import router from "@/router";
 
 const BASE_URL = "http://localhost:3000"; // URL corrigida
 const API_URL = "http://localhost:3000/user/login"; // URL corrigida
 const { post } = useAxios();
-const userStore = useUserStore();
 
-async function createUser(userData: User, password: string) {
+async function createUser(username: string, email:string, password: string) {
   try {
     const response = await post(`${BASE_URL}/user/signUp`, {
-      email: userData.email,
-      username: userData.username,
+      username,
+      email,
       password
     });
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("username", username);
     return response.data;
   } catch(err) {
     console.error(err);
   }
 }
 
-async function logIn(userData) {
+async function logIn(username: string, password: string) {
   try {
-    const response = await axios.post(API_URL, userData);
+    const response = await axios.post(API_URL, {username, password});
 
     console.log("Resposta da API:", response.data);
 
@@ -36,37 +36,15 @@ async function logIn(userData) {
 
     localStorage.setItem("token", token);
     console.log("Token armazenado no localStorage:", localStorage.getItem("token"));
-    return { token, userId };
+    return response;
   } catch (error) {
     console.error("Erro ao logar usuário:", error.message, error.response?.status); // Informações extras sobre o erro
     throw error;
   }
 }
 
-async function checkIfUserExists(email) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      console.error("Token não encontrado. Faça login primeiro.");
-      return false;
-    }
-
-    const response = await axios.get(`http://localhost:3000/user/${email}`, { // URL e método corrigidos
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return response.data.email === email; // Ajuste conforme a estrutura da sua API
-  } catch (error) {
-    console.error("Erro ao verificar existência do usuário:", error.message, error.response?.status);
-    return false;
-  }
-}
-
 // Função para obter o token ou fazer login
-async function getToken(userData) {
+async function getToken() {
   const token = localStorage.getItem("token");  // Tenta pegar o token do localStorage
 
   if (token) {
@@ -74,28 +52,11 @@ async function getToken(userData) {
     return token;  // Se o token estiver armazenado, retorna ele
   }
 
-  // Se não encontrar o token, faz o login com o usuário
-  console.log("Fazendo login...");
-  return await logIn(userData);  // Retorna o token do login realizado
+  router.push("/signup");  // Se não tiver token, redireciona para a página de login
 }
 
-export { logIn, checkIfUserExists, getOrGenerateToken };
+export { logIn, createUser, getToken };
 
-// Usando os dados fornecidos para login:
-const userData = {
-  email: "email@example.net",  // ou username: "UserExample"
-  password: "ExempleUser123"
-};
-
-getOrGenerateToken(userData).then(({ token, userId, username, email }) => {
-  console.log("Token obtido:", token);  // O token gerado será retornado aqui
-  console.log("ID do usuário:", userId);
-  console.log("Nome de usuário:", username);
-  console.log("Email do usuário:", email);
-  getProtectedResource();  // Usando o token para acessar um recurso protegido
-}).catch(error => {
-  console.error("Erro ao obter token:", error);
-});
 
 
 

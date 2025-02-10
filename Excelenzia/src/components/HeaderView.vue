@@ -1,9 +1,16 @@
 <template>
     <header>
         <div class="title-container">
-            <h1 class="title">Excelenz</h1>
-            <h1 class="secondary title">IA</h1>
-            <img class="star-logo-img" src="../assets/images/star-removebg-preview.png" alt="star">
+            <div class="tt">
+
+                <h1 class="title">Excelenz</h1>
+                <h1 class="secondary title">IA</h1>
+                <img class="star-logo-img" src="../assets/images/star-removebg-preview.png" alt="star">
+            </div>
+            <div class="login" v-if="logged === null">
+                <router-link class="btn" to="/login">Login</router-link>
+                <router-link class="btn" to="/signup">Sign Up</router-link>
+            </div>
         </div>
         <nav>
             <router-link class="nav-item dashboard-link" to="/">Dashboard</router-link>
@@ -13,7 +20,11 @@
     </header>
 </template>
   
-<script setup> 
+<script setup>
+import { ref } from 'vue';
+
+ 
+const logged = ref(localStorage.getItem('token'));
 </script>
 
 <style scoped>
@@ -26,6 +37,22 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #726bdc;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.btn:nth-child(1) {
+    margin-right: 1rem;
+    background-color: #012557;
+}
+.tt {
+    display: flex;
+    align-items: center;
+}
 header {
     background-color: #02182A;
     width: 100%;
@@ -36,9 +63,10 @@ header {
 }
 
 .title-container {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
     padding-bottom: 0.5rem;
     padding-left: 2rem;

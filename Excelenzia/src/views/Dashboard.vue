@@ -3,7 +3,7 @@
         <div class="profile-container">
             <img class="profile-pic" src="../assets/images/indian-guy.png" alt="profile-pic">
             <div class="profile-info">
-                <h1> Shivanshika </h1>
+                <h1> {{ username }} </h1>
                 <p> Level 10 </p>
             </div>
         </div>
@@ -59,10 +59,14 @@
 </template>
 
 <script setup>
-    import { onMounted } from "vue";
+    import { onMounted, ref } from "vue";
     import Chart from "chart.js/auto";
     import FrequencyTab from "@/components/Dashboard Elements/FrequencyTab.vue";
     import ConquistaMold from "@/components/Dashboard Elements/ConquistaMold.vue";
+import { useUserStore } from "../../stores/userStore";
+
+    const userStore = useUserStore();
+    const username = ref(localStorage.getItem("username"));
 
     onMounted(() => {
     const ctx = document.getElementById("resolucao-grafico").getContext("2d");
