@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
-import { User } from "../types";
+import type { User } from "../types";
 
 //TODO define user object and its types
 export const useUserStore = defineStore("User", {
   state: () => ({
+    isLogged: false,
+    token: null as string | null,
     user: null as User | null,
   }),
   getters: {
@@ -12,7 +14,9 @@ export const useUserStore = defineStore("User", {
   actions: {
     login(user: User) {
       this.user = user;
-      localStorage.setItem("userToken", user.token || "");
+    },
+    get_token() {
+      return this.token;
     },
     logout() {
       this.user = null;

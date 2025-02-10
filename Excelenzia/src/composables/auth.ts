@@ -1,6 +1,25 @@
 import axios from "axios";
+import { useAxios } from "./useAxios";
+import type { User } from "../../types";
+import { useUserStore } from "../../stores/userStore";
 
+const BASE_URL = "http://localhost:3000"; // URL corrigida
 const API_URL = "http://localhost:3000/user/login"; // URL corrigida
+const { post } = useAxios();
+const userStore = useUserStore();
+
+async function createUser(userData: User, password: string) {
+  try {
+    const response = await post(`${BASE_URL}/user/signUp`, {
+      email: userData.email,
+      username: userData.username,
+      password
+    });
+    return response.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
 
 async function logIn(userData) {
   try {
@@ -47,7 +66,7 @@ async function checkIfUserExists(email) {
 }
 
 // Função para obter o token ou fazer login
-async function getOrGenerateToken(userData) {
+async function getToken(userData) {
   const token = localStorage.getItem("token");  // Tenta pegar o token do localStorage
 
   if (token) {

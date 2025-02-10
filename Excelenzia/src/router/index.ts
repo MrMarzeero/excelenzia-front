@@ -47,6 +47,11 @@ const router = createRouter({
       component: () => import('../views/Home de Problemas/BibliotecaProblemas.vue')
     },
     {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/login/Signup.vue')
+    },
+    {
       path: "/problems",
       component: ProblemsLayout,
       children: [
