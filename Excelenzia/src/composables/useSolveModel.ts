@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { AxiosError } from "axios";
 import type { SolutionTemplate } from "../../types";
 import { useProblemStore } from "../../stores/ProblemStore";
-import { getOrGenerateToken } from "./auth";
+import { getToken } from "./auth";
 import { useAxios } from "./useAxios";
 
 export function useSolveModel() {
@@ -21,7 +21,7 @@ export function useSolveModel() {
     error.value = null;
     
     try {
-      const token = getOrGenerateToken();
+      const token = getToken();
       if (!problemStore.result) {
         throw new Error("Problem not found.");
       }
@@ -34,7 +34,7 @@ export function useSolveModel() {
         }
       );
       console.log(response);
-      result.value = response.data;
+      result.value = response;
     } catch (err: any) {
       console.error(err);
       error.value = err.response?.data?.message || "An error occured.";

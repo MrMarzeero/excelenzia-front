@@ -40,8 +40,8 @@ export function useGenerateModel() {
           },
         }
       );
-      result.value = response.data;
-      console.log(response.data);
+      result.value = response;
+      console.log(response);
       problemStore.setLoadingState(false);
       if (result.value) problemStore.setResult(result.value);
     } catch (err: any) {
