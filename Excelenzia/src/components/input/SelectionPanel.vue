@@ -1,61 +1,12 @@
-<script lang="ts">
-export default {
-  name: 'SelectionPanel',
-  props: {
-    options: {
-      type: Array as () => string[], 
-      required: true, 
-    }
-  },
-  data() {
-    return {
-      dropdownVisible: false,
-      selectedOptions: [] as string[], 
-    };
-  },
-  emits: ['update:modelValue'],
-  methods: {
-    toggleDropdown(event: Event) {
-      event.stopPropagation();
-      this.dropdownVisible = !this.dropdownVisible;
-    },
-    toggleOption(option: string) {
-      if (!this.selectedOptions.includes(option)) {
-        this.selectedOptions.push(option);
-      } else {
-        this.selectedOptions.splice(this.selectedOptions.indexOf(option), 1);
-      }
-      this.dropdownVisible = false;
-      this.updateValue(this.selectedOptions.join(','));
-    },
-    handleClickOutside(event: Event) {
-      const dropdown = this.$el.querySelector('.dropdown');
-      if (dropdown && !dropdown.contains(event.target)) {
-        this.dropdownVisible = false;
-      }
-    },
-    updateValue(value: string) {
-      this.$emit('update:modelValue', value);
-    }
-  },
-  mounted() {
-    document.addEventListener('click', this.handleClickOutside);
-  },
-  beforeUnmount() {
-    document.removeEventListener('click', this.handleClickOutside);
-  }
-};
-</script>
-
 <template>
   <div class="selection">
     <div class="btn" @click="toggleDropdown">
       <span>Adicionar</span>
-      <ion-icon name="add-outline"></ion-icon>
+      <ion-icon :icon="ionicons.addOutline"></ion-icon>
     </div>
-    
+
     <div class="dropdown" :class="{'show': dropdownVisible}">
-      <ul>
+       <ul>
         <li v-for="(option, index) in options" :key="index" @click="toggleOption(option)" :class="{'selected': selectedOptions.includes(option)}">
           {{ option }}
         </li>
@@ -65,11 +16,72 @@ export default {
     <div v-if="selectedOptions.length > 0" class="selected-options">
       <div v-for="(option, index) in selectedOptions" :key="index">
         <p>{{ option }}</p>
-        <ion-icon name="close-outline" @click="toggleOption(option)"></ion-icon>
+        <ion-icon :icon="ionicons.closeOutline" @click="toggleOption(option)"></ion-icon>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { defineProps, defineEmits, ref, watch, onMounted, onUnmounted } from 'vue';
+import * as ionicons from 'ionicons/icons';  // Importe todos os ícones
+import { IonIcon } from '@ionic/vue';
+
+const props = defineProps({
+  options: {
+    type: Array as () => string[],
+    required: true,
+  },
+  modelValue: {
+    type: Array as () => string[],
+    default: () => [],
+  },
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const selectedOptions = ref([...props.modelValue]);
+const dropdownVisible = ref(false);
+
+const toggleDropdown = (event: MouseEvent) => { // Tipagem aqui
+  event.stopPropagation();
+  dropdownVisible.value = !dropdownVisible.value;
+};
+
+const toggleOption = (option: string) => {
+  const index = selectedOptions.value.indexOf(option);
+  if (index > -1) {
+    selectedOptions.value.splice(index, 1);
+  } else {
+    selectedOptions.value.push(option);
+  }
+  dropdownVisible.value = false;
+  emit('update:modelValue', selectedOptions.value);
+};
+
+const handleClickOutside = (event: MouseEvent) => { // Tipagem aqui
+  const dropdown = document.querySelector('.dropdown');
+  if (dropdown && event.target instanceof Node && !dropdown.contains(event.target)) {
+    dropdownVisible.value = false;
+  }
+};
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    selectedOptions.value = Array.isArray(newValue) ? [...newValue] : [];
+  }
+);
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+
+</script>
 
 <style scoped>
 * {

@@ -1,31 +1,31 @@
-<script setup>
-import ProblemCard from "@/components/ProblemCard.vue";
-
-const problems = [
-  {
-    name: "Circunferência de um Círculo",
-    statement: "Como calcular a circunferência de um círculo?",
-    options: [], // Se for múltipla escolha, adicionar opções aqui
-    answer: "C = π * d"
-  },
-  {
-    name: "Área do Triângulo",
-    statement: "Qual é a fórmula para calcular a área de um triângulo? ",
-    options: ["A = b * h", "A = (b * h) / 2", "A = b + h"], // Exemplo de múltipla escolha
-    answer: "A = (b * h) / 2"
-  }
-];
-</script>
-
 <template>
   <div class="problems-container">
     <h1>Lista de Problemas</h1>
-    <div v-if="problems.length > 0">
-      <ProblemCard v-for="(problem, index) in problems" :key="index" :problem="problem" />
+
+    <div v-if="loading">Carregando problemas...</div>
+    <div v-if="error">{{ error }}</div>
+
+    <div v-if="questions.length > 0">
+      <ProblemCard v-for="(question, index) in questions" :key="index" :problem="question" />
     </div>
-    <p v-else>Nenhum problema disponível.</p>
+    <p v-else-if="!loading && !error">Nenhum problema disponível.</p>
   </div>
 </template>
+
+<script setup>
+import ProblemCard from "@/components/ProblemCard.vue";
+import { useGenerateProblem } from "@/composables/Quiz Generator/useQuizGenerate";
+import { onMounted } from "vue";
+
+const { questions, loading, error, generateProblems } = useGenerateProblem();
+
+onMounted(async () => {
+  // Verifica se já existem questões no store, se não gera novas.
+  if (questions.value.length === 0) {
+    await generateProblems();
+  }
+});
+</script>
 
 <style scoped>
 .problems-container {

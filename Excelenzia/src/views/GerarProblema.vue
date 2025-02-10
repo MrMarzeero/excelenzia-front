@@ -1,63 +1,22 @@
-<script setup>
-    import SelectionPanel from "@/components/input/SelectionPanel.vue"
-    import DCSelect from "@/components/input/DCSelect.vue"
-    import { ref, watch } from "vue"
-    import { RouterLink } from "vue-router"
-
-    const SelectedSubject = ref("Math")
-    const optionsSubject = ref([])
-    const selectedTopics = ref([])
-
-    const updateOptions = () => {
-        if (SelectedSubject.value === "Math") {
-            optionsSubject.value = ['Álgebra', 'Geometria Plana', 'Geometria Espacial', 'Trigonometria', 'Estatística', 'Probabilidade']
-        } else if (SelectedSubject.value === "Physics") {
-            optionsSubject.value = ['Cinemática', 'Dinâmica', 'Hidrostática', 'Óptica', 'Ondulatória', 'Eletromagnetismo', 'Gravitação']
-        }
-        selectedTopics.value = []
-    }
-
-
-    watch(SelectedSubject, updateOptions)
-
-    updateOptions()
-
-    const editing = ref(false)
-    const text = ref("")
-
-    const enableEditing = () => {
-        editing.value = true
-    }
-
-    const disableEditing = () => {
-        editing.value = false
-        text.value = ""
-    }
-</script>
-
 <template>
     <main class="gen-problem-content">
         <div class="coluna-1">
             <h1 class="title-tab">Personalização</h1>
             <div class="personalization-tab tab">
-
                 <div class="container-options">
                     <h2 class="title-option"> Matéria </h2>
                     <DCSelect v-model="SelectedSubject" :options="[{label: 'Matematica', value: 'Math'}, {label: 'Física', value: 'Physics'}]" selected="Math" />
 
                     <h2 class="title-option"> Tópico </h2>
                     <SelectionPanel class="selection-style" v-model="selectedTopics" :options="optionsSubject" />
-        
+
                     <h2 class="title-option"> Tipo de Quiz </h2>
-                    <DCSelect :options="[{label: 'Discursivo', value: 'Discursive'}, {label: 'Múltipla escolha', value: 'Multiple choice'}]" selected="Multiple choice" />
-                    
+                    <DCSelect v-model="selectedQuizType" :options="[{label: 'Discursivo', value: 'discursive'}, {label: 'Múltipla escolha', value: 'multiple-choice'}]" selected="multiple-choice" />
+
                     <h2 class="title-option"> Número de Questões </h2>
-                    <input class="questNum-style" type="number" v-model="questNumberAmount" :min="1" :max="10" placeholder="1" />
-                    
-    
+                    <input class="questNum-style" type="number" v-model="questionsAmount" :min="1" :max="10" placeholder="1" />
                 </div>
-                <RouterLink to="/quiz">
-                    <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
+                <RouterLink to="/quiz-view" @click="generateProblems">  <button class="submitButton" type="submit" :disabled="loading">Gerar problema</button>
                 </RouterLink>
             </div>
         </div>
@@ -67,14 +26,78 @@
             <div class="description-tab">
                 <button v-if="!editing" class="btn" @click="enableEditing"> + Clique para adicionar uma descrição </button>
                 <div v-else class="text-area-container">
-                    <textarea v-model="text" class="text-area tab">  </textarea>
+                    <textarea v-model="description" class="text-area tab"> </textarea>
                     <button @click="disableEditing" class="btn-cancelar">Cancelar</button>
                 </div>
-        
             </div>
         </div>
     </main>
 </template>
+
+<script setup>
+    import SelectionPanel from "@/components/input/SelectionPanel.vue"
+    import DCSelect from "@/components/input/DCSelect.vue"
+    import { ref, watch } from "vue"
+    import { RouterLink } from "vue-router"
+    import { useChoiceStore } from "../../stores/ChoicesProblemStore" // Importe o store
+    import { useGenerateProblem } from "@/composables/Quiz Generator/useQuizGenerate" // Importe a função
+
+    const choiceStore = useChoiceStore(); // Use o store
+    const { generateProblems, loading } = useGenerateProblem(); // Obtenha a função
+
+    const SelectedSubject = ref("Math")
+    const optionsSubject = ref([])
+    const selectedTopics = ref([])
+    const selectedQuizType = ref("multiple-choice") // Valor padrão corrigido
+    const questionsAmount = ref(1) // Valor padrão corrigido
+    const description = ref("")
+
+    const updateOptions = () => {
+      if (SelectedSubject.value === "Math") {
+        optionsSubject.value = ['Álgebra', 'Geometria Plana', 'Geometria Espacial', 'Trigonometria', 'Estatística', 'Probabilidade']
+      } else if (SelectedSubject.value === "Physics") {
+        optionsSubject.value = ['Cinemática', 'Dinâmica', 'Hidrostática', 'Óptica', 'Ondulatória', 'Eletromagnetismo', 'Gravitação']
+        }
+      selectedTopics.value = []
+    }
+
+    watch(SelectedSubject, updateOptions)
+    updateOptions()
+
+    watch(selectedQuizType, (newType) => {
+      choiceStore.setQuizType(newType)
+    })
+
+    watch(questionsAmount, (newAmount) => {
+      choiceStore.setQuestionsAmount(newAmount)
+    })
+
+    watch(description, (newDescription) => {
+      choiceStore.setDescription(newDescription)
+    })
+
+    watch(selectedTopics, (newTopics) => {
+        console.log("selectedTopics:", newTopics); // Verifique o valor aqui
+        choiceStore.topics = newTopics
+    })
+
+    watch(SelectedSubject, (newSubject) => {
+      choiceStore.subject = newSubject
+    })
+
+
+
+    const editing = ref(false)
+
+    const enableEditing = () => {
+        editing.value = true
+    }
+
+    const disableEditing = () => {
+        editing.value = false
+        description.value = ""
+    }
+</script>
 
 <style >
     .gen-problem-content{

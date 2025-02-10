@@ -5,10 +5,10 @@ import { useProblemStore } from "../../stores/ProblemStore.ts";
 
 export function useGenerateModel() {
   const formData = ref({
-    context: "",
-    topics: "",
-    level: "Easy",
-    language: "Portuguese",
+    context: '',
+    topics: [], // Inicialize topics como um array vazio!
+    level: 'Easy',
+    language: 'Portuguese',
   });
 
   const loading = ref(false);
@@ -27,7 +27,7 @@ export function useGenerateModel() {
         {
           language: formData.value.language,
           context: formData.value.context,
-          topics: formData.value.topics.split(","),
+          topics: formData.value.topics,
           level: formData.value.level,
         },
         {

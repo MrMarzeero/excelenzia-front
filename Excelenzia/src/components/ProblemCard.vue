@@ -1,39 +1,45 @@
 <template>
-    <div class="problem-card">
-      <h2 class="problem-name">{{ problem.name }}</h2>
-      <p class="problem-statement">{{ problem.statement }}</p>
-  
-      <div v-if="isMultipleChoice" class="options-container">
-        <ul>
-          <li v-for="(option, index) in problem.options" :key="index" class="option">
-            {{ option }}
-          </li>
-        </ul>
-      </div>
-  
-      <button class="show-answer-btn" @click="showAnswer = !showAnswer">
-        {{ showAnswer ? "Esconder Resposta" : "Mostrar Resposta" }}
-      </button>
-  
-      <p v-if="showAnswer" class="answer">{{ problem.answer }}</p>
+  <div class="problem-card">
+    <h2 class="problem-name">{{ problem.name }}</h2>
+    <p class="problem-statement">{{ problem.statement }}</p>
+
+    <div v-if="problem.options && problem.options.length > 0" class="options-container">
+      <ul>
+        <li v-for="(option, index) in problem.options" :key="index" class="option">
+          {{ option }}
+        </li>
+      </ul>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref, computed } from "vue";
-  
-  const props = defineProps({
-    problem: {
-      type: Object,
-      required: true
-    }
-  });
-  
-  const showAnswer = ref(false);
-  
-  // Verifica se o problema tem opções (múltipla escolha) ou é discursivo
-  const isMultipleChoice = computed(() => props.problem.options.length > 0);
-  </script>
+
+    <button class="show-answer-btn" @click="showAnswer = !showAnswer">
+      {{ showAnswer ? "Esconder Resposta" : "Mostrar Resposta" }}
+    </button>
+
+    <p v-if="showAnswer" class="answer">{{ formattedAnswer }}</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+
+const props = defineProps({
+  problem: {
+    type: Object,
+    required: true
+  }
+});
+
+const showAnswer = ref(false);
+
+const formattedAnswer = computed(() => {
+  if (Array.isArray(props.problem.answer)) {
+    return props.problem.answer.join(', ');
+  } else {
+    return props.problem.answer;
+  }
+});
+
+</script>
   
   <style scoped>
   .problem-card {

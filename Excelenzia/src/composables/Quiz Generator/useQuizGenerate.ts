@@ -27,32 +27,51 @@ export function useGenerateProblem() {
     error.value = null;
 
     try {
-      await getOrGenerateToken(); // Garante que o token esteja disponível
+      const token = await getOrGenerateToken();
 
       const requestData = {
         subject: choiceStore.subject,
-        topics: choiceStore.topics,
+        topics: Array.isArray(choiceStore.topics)? choiceStore.topics: [], // Linha corrigida
         quizType: choiceStore.quizType,
         questionsAmount: choiceStore.questionsAmount,
         description: choiceStore.description,
-      };
+    };
 
-      const response = await post("/quiz/generate/", requestData);
+      const response = await post("/quiz/generate/", requestData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      if (response.data && response.data.quiz && response.data.quiz.id) {
-        quiz.value = response.data.quiz;
-        if (quiz.value) { 
-          await fetchQuiz(quiz.value.id);
+      if (response.data && response.data.id) {
+        quiz.value = response.data;
+
+        const quizId = quiz.value?.id;
+
+        if (quizId) {
+          await fetchQuiz(quizId);
         } else {
-          console.error("quiz.value ainda é null após a atribuição!");
-          error.value = "Erro ao processar resposta da API.";
+          console.error("ID do quiz não encontrado na resposta da API:", response.data);
+          error.value = "Erro ao obter ID do quiz.";
         }
+
       } else {
-        throw new Error("A resposta da API não contém um quiz válido.");
+        console.error("Resposta da API inválida:", response.data);
+        error.value = "A resposta da API não contém um quiz válido.";
       }
-    } catch (err) {
-      error.value = "Erro ao gerar problemas.";
-      console.error(err);
+
+    } catch (err: any) { // Tipagem do erro
+      error.value = "Erro ao gerar problemas: " + err.message;
+      console.error("Erro na geração de problemas:", err);
+
+      // Opcional: tratamento de erro mais específico
+      if (err.response) {
+        console.error("Detalhes do erro na resposta:", err.response.data, err.response.status);
+        error.value += ` (Status: ${err.response.status})`; // Adiciona o status do erro à mensagem
+      } else if (err.request) {
+        console.error("Erro na requisição:", err.request);
+        error.value += " (Erro na requisição)";
+      }
     } finally {
       loading.value = false;
     }
